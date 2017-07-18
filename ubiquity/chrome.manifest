@@ -1,0 +1,35 @@
+component {3a54db0f-281a-4af7-931c-de747c37b423} components/about.js
+contract @mozilla.org/network/protocol/about;1?what=ubiquity {3a54db0f-281a-4af7-931c-de747c37b423}
+
+component {bef32df0-b9f6-4833-a3c6-ad361137ae69} components/commandline.js
+contract @mozilla.org/commandlinehandler/general-startup;1?type=ubiquity {bef32df0-b9f6-4833-a3c6-ad361137ae69}
+category command-line-handler m-ubiquity @mozilla.org/commandlinehandler/general-startup;1?type=ubiquity
+
+resource ubiquity ./
+
+content ubiquity chrome/content/
+
+skin ubiquity skin chrome/skin/
+
+overlay chrome://browser/content/browser.xul   chrome://ubiquity/content/browser.xul
+
+style chrome://global/content/customizeToolbar.xul chrome://ubiquity/skin/browser.css
+
+locale ubiquity ca    chrome/locale/ca/
+locale ubiquity de    chrome/locale/de/
+locale ubiquity en-US chrome/locale/en-US/
+locale ubiquity es-ES chrome/locale/es-ES/
+locale ubiquity cs-CZ chrome/locale/cs-CZ/
+locale ubiquity fi-FI chrome/locale/fi-FI/
+locale ubiquity fr    chrome/locale/fr/
+locale ubiquity fy-NL chrome/locale/fy-NL/
+locale ubiquity hu    chrome/locale/hu/
+locale ubiquity it-IT chrome/locale/it-IT/
+locale ubiquity ja    chrome/locale/ja/
+locale ubiquity nl    chrome/locale/nl/
+locale ubiquity pl-PL chrome/locale/pl-PL/
+locale ubiquity pt-BR chrome/locale/pt-BR/
+locale ubiquity pt-PT chrome/locale/pt-PT/
+locale ubiquity ru-RU chrome/locale/ru-RU/
+locale ubiquity zh-CN chrome/locale/zh-CN/
+locale ubiquity zh-TW chrome/locale/zh-TW/

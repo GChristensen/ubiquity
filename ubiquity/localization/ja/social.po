@@ -1,0 +1,171 @@
+# social.po
+#
+# Localizers:
+# Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>
+# Michael Yoshitaka Erlewine <mitcho@mitcho.com>
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Ubiquity 0.5\n"
+"POT-Creation-Date: 2009-06-20 00:48+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>\n"
+"Language-Team: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. twitter command:
+#. use | to separate multiple name values:
+msgctxt "twitter.names"
+msgid "twitter|tweet|share using twitter"
+msgstr "呟く|呟いて|呟け|twitterで呟く|twitterで呟いて|twitterで呟け"
+
+msgctxt "twitter.help"
+msgid "You'll need a <a href=\"http://twitter.com\">Twitter account</a>, obviously.  If you're not already logged in you'll be asked to log in."
+msgstr "このコマンドを実行するには <a href=\"http://twitter.com\">Twitter のアカウント</a> が必要です。まだログインしていないときはログインします。"
+
+msgctxt "twitter.description"
+msgid "Sets your Twitter status to a message of at most 160 characters."
+msgstr "Twitter にあなたの今していることを 140 字以内で書き込みます。"
+
+msgctxt "twitter.preview"
+msgid "Updates your Twitter status ${username} to:"
+msgstr "あなた${username}の呟きを Twitter に書き込みます: "
+
+msgctxt "twitter.preview"
+msgid "Characters remaining: <b>${chars}</b>"
+msgstr "残り文字数: <b>${chars}</b>"
+
+msgctxt "twitter.preview"
+msgid "tip: tweet @mozillaubiquity for help"
+msgstr "ヒント: tweet @mozillaubiquity for help"
+
+msgctxt "twitter.preview"
+msgid "The last <b>${truncate}</b> characters will be truncated!"
+msgstr "字数制限のため、最後の <b>${truncate}</b> 字は切り捨てられました！"
+
+msgctxt "twitter.preview"
+msgid "(For user <b>${usernameText}</b>)"
+msgstr "(<b>${usernameText}</b>)"
+
+msgctxt "twitter.execute"
+msgid "requires a status to be entered"
+msgstr "書き込むメッセージが必要です。"
+
+msgctxt "twitter.execute"
+msgid "error - status not updated"
+msgstr "エラー - 書き込み失敗"
+
+msgctxt "twitter.execute"
+msgid "direct message sent"
+msgstr "ダイレクトメッセージを送信しました。"
+
+msgctxt "twitter.execute"
+msgid "status updated"
+msgstr "あなたの呟きを書き込みました。"
+
+
+#. digg command:
+#. use | to separate multiple name values:
+msgctxt "digg.names"
+msgid "digg|share using digg"
+msgstr "diggる|diggれ|タレコむ|垂れ込む|たれこむ|たれこめ|diggにたれこむ|たれこんで"
+
+msgctxt "digg.description"
+msgid "If not yet submitted, submits the page to Digg. Otherwise, it takes you to the story's Digg page."
+msgstr "このページを Digg にたれこみます。または該当する Digg ページを開きます。"
+
+msgctxt "digg.preview"
+msgid "Submit or digg this page. Checking if this page has already been submitted..."
+msgstr "このページを Digg にたれこみます。すでにこのページがたれこまれていないか確認しています。"
+
+msgctxt "digg.preview"
+msgid "Submit this page to Digg"
+msgstr "このページを Digg にたれこみます。"
+
+msgctxt "digg.preview"
+msgid "Submit this page to Digg with the description:"
+msgstr "このページを Digg にたれこみます。ページの説明:"
+
+msgctxt "digg.preview"
+msgid "Description can only be 375 characters. The last <b>${chars}</b> characters will be truncated."
+msgstr "説明の字数は 375 字までです。最後の <b>${chars}</b> 字は切り捨てられます。"
+
+msgctxt "digg.preview"
+msgid "Digg this page. This page already has <b>${diggs}</b> diggs."
+msgstr "このページはすでに <b>${diggs}</b> digg たれこまれています。"
+
+
+#. tinyurl command:
+#. use | to separate multiple name values:
+msgctxt "tinyurl.names"
+msgid "tinyurl"
+msgstr "tinyurlで短縮する|tinyurlで短縮して|tinyurlで短縮しろ|短縮する|短縮して|短縮しろ"
+
+msgctxt "tinyurl.description"
+msgid "Replaces the selected URL with a <a href=\"http://www.tinyurl.com\">TinyURL</a>."
+msgstr "選択した URL を <a href=\"http://www.tinyurl.com\">TinyURL</a> で短い URL に置き換えます。"
+
+msgctxt "tinyurl.preview"
+msgid "Replaces the selected URL with..."
+msgstr "選択した URL を置き換えます..."
+
+msgctxt "tinyurl.preview"
+msgid "Replaces the selected URL with <b>${tinyurl}</b>."
+msgstr "選択した URL を <b>${tinyurl}</b> に置き換えます。"
+
+
+#. share (on delicious) command:
+#. use | to separate multiple name values:
+msgctxt "share (on delicious).names"
+msgid "share|delicious"
+msgstr "共有する|共有して|共有しろ|deliciousで共有する|deliciousで共有して|deliciousで共有しろ"
+
+msgctxt "share (on delicious).help"
+msgid "Select text on the page to use as notes, or enter your own text after the command word.  You can also assign tags to the bookmark with the \"tagged\" modifier, and alter the bookmark default page title with the \"entitled\" modifier.  Note that you must also already be logged in at delicious.com to use this command."
+msgstr "ページ上の選択したテキストまたはコマンドに入力したテキストをノートとして使用できます。タグとタイトルも指定できます。このコマンドを使用するには delicious.com にログインしている必要があります。"
+
+msgctxt "share (on delicious).description"
+msgid "Share the current page as a bookmark on delicious.com"
+msgstr "現在のページを delicous.com のブックマークで共有します。"
+
+msgctxt "share (on delicious).preview"
+msgid "This URL cannot be shared on ${delicious}."
+msgstr "この URL は ${delicious} で共有できません。"
+
+msgctxt "share (on delicious).preview"
+msgid "No active user found - log in at ${delicious} to use this command."
+msgstr "アクティブなユーザが見つかりませんでした。このコマンドを使用するには ${delicious} でログインしてください。"
+
+msgctxt "share (on delicious).preview"
+msgid "A title is required for bookmarks on ${delicious}"
+msgstr "${delicious} 用ブックマークのタイトルが必要です。"
+
+msgctxt "share (on delicious).preview"
+msgid "Share a bookmark at ${delicious}:"
+msgstr "${delicious} でブックマークを共有します:"
+
+msgctxt "share (on delicious).execute"
+msgid "This URL cannot be shared on delicious."
+msgstr "この URL は ${delicious} で共有できません。"
+
+msgctxt "share (on delicious).execute"
+msgid "No active user found - log in at delicious.com to use this command."
+msgstr "アクティブなユーザが見つかりませんでした。このコマンドを使用するには delicious.com でログインしてください。"
+
+msgctxt "share (on delicious).execute"
+msgid "A title is required for bookmarks at delicious.com"
+msgstr "delicious.com 用ブックマークのタイトルが必要です。"
+
+msgctxt "share (on delicious).execute"
+msgid "Bookmark \\\"${description}\\\" shared at delicious.com/${user_name}"
+msgstr "「${description}」を delicious.com/${user_name} のブックマークに追加しました。"
+
+msgctxt "share (on delicious).execute"
+msgid "ERROR: Bookmark \\\"${description}\\\" NOT shared on delicious.com/${user_name}"
+msgstr "エラー:「 ${description}」を delicious.com/${user_name} のブックマークに追加できませんでした。"
+
+

@@ -1,0 +1,125 @@
+/*
+  =skin=
+  @name Custom
+  @author You
+  @homepage http://www.yourpage.com
+  @email you@you.com
+  @license MPL/LGPL/GPL
+  =/skin=
+*/
+
+@-moz-document url(chrome://browser/content/browser.xul) {
+
+#ubiquity-panel {
+}
+
+#ubiquity-frame {
+}
+
+#ubiquity-entry-container {
+}
+
+/* Where text is entered */
+#ubiquity-entry {
+}
+
+#ubiquity-suggest-container {
+}
+
+/* iframe that suggests */
+#ubiquity-suggest {
+  border: none;
+  overflow: hidden;
+}
+
+#ubiquity-preview-container {
+}
+
+/* div that auto-adjusts its height to the preview block */
+#ubiquity-preview {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+/* browser that previews */
+#ubiquity-browser {
+  width: 500px;
+  height: 500px;
+}
+
+/* div that helps */
+#ubiquity-help {
+}
+
+}
+
+/* Formatting for the Suggestions */
+@-moz-document url(chrome://ubiquity/content/suggest.html) {
+
+#suggestions {
+  margin: 0;
+}
+
+.suggested {
+  cursor: pointer;
+}
+
+.hilited {
+}
+
+.cmdicon {
+  display: inline-block;
+  width: 16px;
+  margin-right: 0.3em;
+}
+.cmdicon img {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+.object {
+
+}
+
+.argument {
+
+}
+
+.needarg {
+}
+.needarg:before {
+  content: "(";
+}
+.needarg:after {
+  content: ")";
+}
+
+.hilited .needarg {
+}
+
+.selection {
+}
+
+}
+
+/* Formatting for the Preview box */
+@-moz-document url(resource://ubiquity/preview.html) {
+
+body {
+  margin: 0;
+}
+
+.error {
+  font-style: oblique;
+}
+
+.default > .name {}
+.default > .help {}
+.default > .description {}
+
+.search-command .title {}
+.search-command .preview {}
+.search-command .thumbnail {}
+
+}

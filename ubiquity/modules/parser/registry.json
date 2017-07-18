@@ -1,0 +1,158 @@
+{
+  "en": {
+    "name": "English",
+    "anaphora": [
+      "this",
+      "that",
+      "it",
+      "selection",
+      "him",
+      "her",
+      "them"
+    ],
+    "roles": {
+      "goal": "to",
+      "source": "from",
+      "location": "near",
+      "time": "at",
+      "instrument": "with",
+      "format": "in",
+      "modifier": "of",
+      "alias": "as"
+    }
+  },
+  "pt": {
+    "name": "Português",
+    "anaphora": [
+      "isto",
+      "isso",
+      "aquilo"
+    ],
+    "roles": {
+      "goal": "a",
+      "source": "de",
+      "location": "em",
+      "time": "às",
+      "instrument": "com",
+      "format": "em",
+      "modifier": "de",
+      "alias": "como"
+    }
+  },
+  "fr": {
+    "name": "Français",
+    "anaphora": [
+      "this"
+    ],
+    "roles": {
+      "goal": "au",
+      "source": "de",
+      "modifier": "de",
+      "location": "sur",
+      "time": "a",
+      "instrument": "avec",
+      "alias": "comme",
+      "format": "en"
+    }
+  },
+  "ja": {
+    "name": "日本語",
+    "anaphora": [
+      "これ",
+      "それ",
+      "あれ"
+    ],
+    "roles": {
+      "goal": "へ",
+      "source": "から",
+      "time": "に",
+      "location": "にて",
+      "instrument": "と",
+      "alias": "として",
+      "modifier": "の",
+      "format": "で"
+    }
+  },
+  "es": {
+    "name": "Español",
+    "anaphora": [
+      "esto",
+      "eso",
+      "la selecci�n",
+      "�l",
+      "ella",
+      "ellos",
+      "ellas"
+    ],
+    "roles": {
+      "goal": "hasta",
+      "source": "desde",
+      "location": "en",
+      "time": "a",
+      "instrument": "con",
+      "format": "en",
+      "alias": "como",
+      "modifier": "de"
+    }
+  },
+  "tr": {
+    "name": "Türkçe",
+    "anaphora": [
+      "bu",
+      "bu",
+      "se�im",
+      "o",
+      "o",
+      "onlar",
+      "onlar"
+    ],
+    "roles": {
+      "goal": "kime",
+      "source": "den",
+      "location": "daki",
+      "time": "de",
+      "instrument": "dan",
+      "format": "olarak",
+      "alias": "como",
+      "modifier": "de"
+    }
+  },
+  "nl": {
+    "name": "Nederlands",
+    "anaphora": [
+      "dit",
+      "dat",
+      "het",
+      "de",
+      "selectie",
+      "hij",
+      "zij"
+    ],
+    "roles": {
+      "goal": "naar",
+      "source": "van",
+      "location": "nabij",
+      "time": "om",
+      "instrument": "met",
+      "format": "in",
+      "modifier": "van",
+      "alias": "als"
+    }
+  },
+  "$": {
+    "name": "$",
+    "anaphora": [
+      "$"
+    ],
+    "roles": {
+      "goal": ">",
+      "source": "<",
+      "location": "@",
+      "time": ":",
+      "instrument": "+",
+      "alias": "=",
+      "format": "%",
+      "modifier": "*"
+    }
+  }
+}

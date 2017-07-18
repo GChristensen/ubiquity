@@ -1,0 +1,9 @@
+syntax: glob
+*.orig
+*.xpi
+*.pyc
+*~
+*.swp
+.project
+.settings
+.DS_Store

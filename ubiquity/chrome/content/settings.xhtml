@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html [
+  <!ENTITY % htmlDTD PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+    %htmlDTD;
+  <!ENTITY % directionDTD SYSTEM "chrome://global/locale/global.dtd">
+    %directionDTD;
+  <!ENTITY % ubiquityaboutDTD SYSTEM "chrome://ubiquity/locale/aboutubiquity.dtd">
+    %ubiquityaboutDTD;
+  <!ENTITY % ubiquityinternalDTD SYSTEM "chrome://ubiquity/content/internal.dtd">
+    %ubiquityinternalDTD;
+]>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>&ubiquity.pagetitle.Settings;</title>
+
+  <base href="chrome://ubiquity/content" />
+
+  <link rel="icon" type="image/x-icon" id="favicon"
+    href="chrome://ubiquity/skin/icons/favicon.ico" />
+  <link rel="stylesheet" type="text/css" media="all" href="web-content.css" />
+
+  <script src="resource://ubiquity/scripts/jquery.js"></script>
+  <script type="application/javascript;version=1.8" src="header.js"></script>
+  <script type="application/javascript;version=1.8" src="settings.js"></script>
+
+  <style>
+    .warning {
+      width: 740px; padding: 5px; border: 1px solid #F09B9A;
+      background-color: #FFFCBA;
+    }
+    .prefkeys { width: 88%; cursor: pointer; padding: 1px 0.5em }
+  </style>
+</head>
+<body dir="&locale.dir;">
+<div class="head">&ubiquity.tagline.Settings;</div>
+<div id="nav-container"></div>
+
+<br clear="all" />
+
+<div class="page-tip">
+  <p>&ubiquity.pagetip.Settings;</p>
+</div>
+
+<br clear="all" />
+
+<div class="col-five">
+  <h2 class="top">&ubiquity.settings.Skins;</h2>
+  <ul id="skin-list"></ul>
+
+  <ul class="button-list">
+    <li><a class="button" id="edit-button" onclick="openSkinEditor()">&ubiquity.settings.ButtonEditCustomSkin;</a></li>
+  </ul>
+</div>
+
+<div class="col-four">
+  <h2 class="top">&ubiquity.settings.KeyCombination;</h2>
+  <fieldset>
+    <legend>&ubiquity.settings.InvokingUbiquity;</legend>
+    <div style="margin-left:10px;">
+      <p>
+        <input type="text" id="keyInput" class="prefkeys"/><br />
+        &ubiquity.settings.ChangeShortcut;
+      </p>
+      <p id="keyNotify"></p>
+      <p>
+        <input type="text" id="repeatKeyInput" class="prefkeys"/><br />
+        Additionally, you can specify a combo to repeat the last command.
+      </p>
+    </div>
+  </fieldset>
+
+  <h2>&ubiquity.settings.LangSettings;</h2>
+  <p>
+    &ubiquity.settings.SelectLanguage;
+    <select id="language-select" onchange="changeLanguageSettings();"></select>
+  </p>
+
+  <h2>&ubiquity.settings.MiscSettings;</h2>
+  <p>
+    &ubiquity.settings.MaxSuggestions;
+    <input type="text" id="max-suggestions"
+      size="3" style="text-align:center"/>
+  </p>
+</div>
+
+<br clear="all" />
+
+<div id="editor-div" style="display:none">
+  <h2>&ubiquity.settings.CustomSkin;</h2>
+  <ul class="button-list">
+    <li>
+      <a class="button" onclick="saveCustomSkin()">&ubiquity.settings.SaveSkin;</a>
+      <a class="button" onclick="saveAs()">&ubiquity.settings.SaveSkinAs;</a>
+      <a class="button" onclick="shareSkin()">&ubiquity.settings.ShareSkin;</a>
+      &ubiquity.settings.SaveNotice;
+    </li>
+
+    <br /><br />
+    <div class="warning">&ubiquity.settings.Bug449Warning;</div>
+    <br /><br />
+
+    <li><textarea rows="30" style="width:92%" id="skin-editor"></textarea></li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Suggestion Memory Debugger</title>
+</head>
+<body>
+<table>
+  <thead><tr>
+    <th>Input</th><th>Choice</th><th>Number of times</th>
+  </tr></thead>
+  <tbody id="sugg-mem-table"></tbody>
+</table>
+<p id="pants"></p>
+<script src="resource://ubiquity/scripts/jquery.js"></script>
+<script type="application/javascript;version=1.8">
+$(function fillTable() {
+  Components.utils.import("resource://ubiquity/modules/utils.js");
+  Components.utils.import("resource://ubiquity/modules/suggestion_memory.js");
+  displayTable(gSM = new SuggestionMemory("main_parser"));
+});
+function displayTable(sm) {
+  var html   = ''
+    , H      = Utils.escapeHtml
+    , tbl    = sm._table
+    , delbtn =
+      '<input type="image" src="chrome://ubiquity/skin/icons/delete.png"/>'
+  for (let input in tbl)
+    for (let [choice, score] in new Iterator(tbl[input])) {
+      let [, url, name] = /^(\w+:[^#]+#)?(.*)/.exec(choice);
+      html += '<tr>'
+           +   '<td>' + H(input) + '</td>'
+           +   '<td title="' + H(choice) + '">'
+           +    '<a href="' + H(url) + '">' + H(name) + '</a>'
+           +   '</td>'
+           +   '<td><input value="' + score + '"/>' + delbtn + '</td>'
+           +  '</tr>'
+    }
+  $("#sugg-mem-table").html(html).change(onchange).click(onclick);
+  function onchange(e) {
+    var $in = $(e.target), [input, choice, score] = values($in);
+    $in.val(sm.setScore(input, choice, score));
+    $in.hide().fadeIn();
+  }
+  function onclick(e) {
+    var $in = $(e.target);
+    if ($in[0].type !== "image") return;
+    var [input, choice, , $tr] = values($in)
+    sm.wipe(input, choice);
+    $tr.fadeOut(111);
+  }
+  function values($in) {
+    var $tr = $in.closest("tr"), $td = $tr.children();
+    return [$td[0].textContent, $td[1].title, $in.val(), $tr];
+  }
+}
+</script>
+</body>
+</html>

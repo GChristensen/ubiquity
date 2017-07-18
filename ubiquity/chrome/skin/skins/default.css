@@ -1,0 +1,198 @@
+/*
+  =skin=
+  
+  @name Simpliquity
+  
+  @author Yatrik Solanki
+  @homepage http://www.yatriksolanki.com
+  @email yatriksolanki@gmail.com
+  @license MPL/LGPL/GPL
+  
+  =/skin=
+*/
+
+@-moz-document url(chrome://browser/content/browser.xul) {
+
+#ubiquity-panel {
+  padding: 0px;
+  margin: 10px;
+  background: rgba(0%, 0%, 0%, 0.8);
+  border-radius: 20px;
+  border-top-left-radius: 0px;
+}
+
+#ubiquity-entry-container {
+  margin: 8px;
+  padding: 3px;
+  font-size: 14pt;
+  border: 0px solid #aaa;
+  border-radius: 0px;
+  background: transparent;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+}
+
+#ubiquity-entry {
+  -moz-appearance: none;
+  background: transparent;
+  border: none;
+  font-size: 18pt;
+  color: #ffffff;
+  width: 100%;
+  font-weight: bold;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+}
+
+#ubiquity-suggest {
+  border: none;
+  width: 500px;
+  min-height: 32px;
+  overflow: hidden;
+}
+
+#ubiquity-suggest-container, #ubiquity-preview-container {
+  margin: 10px;
+}
+
+#ubiquity-preview {
+  border-top: 1px solid #333;
+  min-height: 0px;  
+  max-height: 600px;
+  overflow: hidden;
+}
+
+#ubiquity-browser {
+  width: 500px;
+  height: 600px;
+}
+
+#ubiquity-help {
+  margin: 5px 15px;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+  font-size: 11pt;
+  color: #FFF;
+}
+
+}
+
+@-moz-document url(chrome://ubiquity/content/suggest.html) {
+
+#suggestions {
+  margin: 0;
+  overflow: hidden;
+}
+
+.hilited {
+  padding: 5px;
+  margin: 2px;
+  background: rgba(100%, 100%, 100%, 0.3);
+  border-radius: 5px;
+  color: #FFF;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+}
+
+
+.suggested {
+  margin: 2px;
+  padding: 5px;
+  border-left: solid 10px transparent;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.object, .argument {
+  font-weight: bold;
+}
+
+.needarg {
+  font-style: oblique;
+  color: #999999;
+}
+.needarg:before {
+  content: "(";
+}
+.needarg:after {
+  content: ")";
+}
+
+.cmdicon {
+  display: inline-block;
+  width: 16px;
+}
+.cmdicon img {
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+}
+
+.selection {
+  padding: 2px;
+  border-radius: 3px;
+  display: inline-block;
+  font-variant: small-caps;
+  background-color: #BBB;
+  color: #333;
+  position: relative;
+  top: -2px;
+  font-size: 8pt;
+  font-weight: normal;
+  border: 1px solid #777;
+}
+
+}
+
+/* Formatting for the Preview box */
+@-moz-document url-prefix(resource://ubiquity/preview.html) {
+
+body {
+  color: #ffffff;
+  background: transparent;
+  padding-left: 15px;
+  padding: 7px;
+  margin: 5px 0 0;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+  font-size: 11pt;
+}
+
+.gresult {
+  margin-bottom: 10px;
+}
+
+.gresult a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  font-size: 14pt;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+  cursor: pointer;
+}
+.gresult-url {
+  font-size: x-small;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+  color: #777;
+}
+.gresult-content {
+  margin-right: 10px;
+  font-family: Calibri, Helvetica, Verdana, Arial;
+  font-size: small;
+}
+
+.error {
+  color: #d44;
+}
+
+.search-command kbd:before {
+  content: "[";
+}
+.search-command kbd:after {
+  content: "]";
+}
+
+.search-command .thumbnail {
+  float: left; margin: 5px 10px 0 0;
+}
+
+.search-command .title {
+  clear: both;
+}
+
+}

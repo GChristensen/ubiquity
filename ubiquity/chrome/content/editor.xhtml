@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html [
+  <!ENTITY % htmlDTD PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+    %htmlDTD;
+  <!ENTITY % directionDTD SYSTEM "chrome://global/locale/global.dtd">
+    %directionDTD;
+  <!ENTITY % ubiquityaboutDTD SYSTEM "chrome://ubiquity/locale/aboutubiquity.dtd">
+    %ubiquityaboutDTD;
+  <!ENTITY % ubiquityinternalDTD SYSTEM "chrome://ubiquity/content/internal.dtd">
+    %ubiquityinternalDTD;
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<head>
+  <title>&ubiquity.pagetitle.HackUbiquity;</title>
+
+  <base href="chrome://ubiquity/content" />
+
+  <link rel="icon" type="image/x-icon" id="favicon" href="chrome://ubiquity/skin/icons/favicon.ico" />
+  <link rel="stylesheet" href="web-content.css" type="text/css" />
+
+  <script type="text/javascript" src="resource://ubiquity/scripts/jquery.js"></script>
+  <script type="application/javascript;version=1.8" src="chrome://ubiquity/content/header.js"></script>
+
+  <script type="application/javascript;version=1.8" src="editor.js"></script>
+</head>
+<body dir="&locale.dir;">
+
+<div class="head">&ubiquity.tagline.HackUbiquity;</div>
+
+<div id="nav-container"></div>
+
+<br clear="all" />
+
+<div class="page-tip">
+  <p>&ubiquity.pagetip.HackUbiquity;</p>
+</div>
+
+<h1>&ubiquity.editor.CommandEditorHeader;</h1>
+<p id="notification-bar" class="notification" style="display:none"></p>
+
+<div class="col-three">
+  <p>&ubiquity.editor.CommandEditorNewCommands;</p>
+</div>
+
+<div class="col-three">
+  <p>&ubiquity.editor.CommandEditorReadAuthTutorial;</p>
+  <p style="background-color: #F2E78B; padding:5px;">&ubiquity.editor.CommandEditorReadTheDocs;</p>
+</div>
+
+<div class="col-two">
+  <p>&ubiquity.editor.CommandEditorGetInvolved;</p>
+</div>
+
+<div id="editor-actions">
+  <br clear="all" />
+  <div id="editor-log"></div>
+
+  <br clear="all" />
+
+  <ul class="button-list">
+    <li><a class="button" onclick="importTemplate();return false"><strong>&ubiquity.editor.ImportTemplate;</strong></a></li>
+    <li><a class="button" onclick="paste();return false"><strong>&ubiquity.editor.ShareCommand;</strong></a></li>
+    <li><a class="button" onclick="saveAs();return false"><strong>&ubiquity.editor.SaveToFile;</strong></a></li>
+  </ul>
+
+  <br clear="all" />
+
+  <div id="editor-options">
+  </div>
+</div>
+
+<textarea id="editor" style="width:99%; height:480px"></textarea>
+
+<br clear="all" />
+
+<div class="col-five">
+  <h2>&ubiquity.editor.ShareYourCommands;</h2>
+  <p>&ubiquity.editor.ShareCommandsParagraph2;</p>
+  <p>&ubiquity.editor.ShareCommandsParagraph1;</p>
+
+  <h2>&ubiquity.editor.DevelopingUbiquity;</h2>
+  <p>&ubiquity.editor.DevelopingUbiquityParagraph1;</p>
+</div>
+
+</body>
+</html>

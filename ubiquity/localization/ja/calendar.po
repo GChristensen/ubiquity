@@ -1,0 +1,77 @@
+# calendar.po
+# 
+# Localizers:
+# Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>
+# Michael Yoshitaka Erlewine <mitcho@mitcho.com>
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Ubiquity\n"
+"POT-Creation-Date: 2009-06-26 14:21+0900\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. add to google calendar command:
+#. use | to separate multiple name values:
+msgctxt "add to google calendar.names"
+msgid "add to google calendar|quick add"
+msgstr "カレンダーに追加する|カレンダーに追加して|カレンダーに追加して|追加する|追加して|追加しろ|ついかする|ついかして|ついかしろ|ついか|予定追加"
+
+msgctxt "add to google calendar.help"
+msgid "<a href=\"http://www.google.com/support/calendar/bin/answer.py?answer=36604\" title=\"Quick Add\">Enter the event naturally</a>\n"
+". e.g.:\n"
+"<ul>\n"
+"  <li>3pm Lunch with Myk and Thunder</li>\n"
+"  <li>Jono's Birthday on Friday</li>\n"
+"</ul><p>Currently, only works with <a href=\"http://calendar.google.com\">Google Calendar</a> so you'll need a Google account to use it.</p>"
+msgstr "<a href=\"http://www.google.com/support/calendar/bin/answer.py?answer=36604\" title=\"Quick Add\">自然な言葉でイベントの詳細を入力してください。</a>\n"
+"例:\n"
+"<ul>\n"
+"  <li>3pm Lunch with Myk and Thunder</li>\n"
+"  <li>Jono's Birthday on Friday</li>\n"
+"</ul><p>現在このコマンドは <a href=\"http://calendar.google.com\">Google カレンダー</a> にのみ対応しています。</p>"
+
+msgctxt "add to google calendar.description"
+msgid "Adds an event to your calendar."
+msgstr "カレンダーにイベントを追加します。"
+
+msgctxt "add to google calendar.execute"
+msgid "Authorization error"
+msgstr "認証エラー"
+
+msgctxt "add to google calendar.execute"
+msgid "Please make sure you are logged in to Google Calendar"
+msgstr "Google カレンダーにログインしてください。"
+
+msgctxt "add to google calendar.execute"
+msgid "Event created"
+msgstr "イベントを追加しました。"
+
+msgctxt "add to google calendar.execute"
+msgid "Error creating the event"
+msgstr "エラーのためイベントが追加できませんでした。"
+
+
+#. check google calendar command:
+#. use | to separate multiple name values:
+msgctxt "check google calendar.names"
+msgid "check google calendar"
+msgstr "カレンダーで確認する|カレンダーで確認して|カレンダーで確認しろ|カレンダー確認しろ|カレンダーでかくにんする|カレンダーでかくにんして|カレンダーでかくにんしろ"
+
+msgctxt "check google calendar.help"
+msgid "Try issuing \"check on thursday\"<p>Currently, only works with <a href=\"http://calendar.google.com\">Google Calendar</a> so you'll need a Google account to use it.</p>"
+msgstr "例: \"Thursday のカレンダーを確認\"<p>このコマンドは <a href=\"http://calendar.google.com\">Google カレンダー</a> のアカウントが必要です。</p>"
+
+msgctxt "check google calendar.description"
+msgid "Checks what events are on your calendar for a given date."
+msgstr "Google カレンダーで日程を確認します。"
+
+msgctxt "check google calendar.preview"
+msgid "Checking Google Calendar for events on ${date}."
+msgstr "Google カレンダーで ${date} の日程を確認する。"
+

@@ -1,0 +1,295 @@
+# firefox.po
+# 
+# Localizers:
+# Michael Yoshitaka Erlewine <mitcho@mitcho.com>
+# Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>
+# Satoshi Murakami <murky.satyr@gmail.com>
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Ubiquity 0.5\n"
+"POT-Creation-Date: 2009-06-20 00:45+0900\n"
+"Last-Translator: Masahiko Imanaka <chimantaea_mirabilis@yahoo.co.jp>\n"
+"Language-Team: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+
+msgid "Changes to %tab%"
+msgstr "%tab% に切り替え"
+
+msgid "Closes %tab%"
+msgstr "%tab% を閉じる"
+
+
+#. exit firefox command:
+#. use | to separate multiple name values:
+msgctxt "exit firefox.names"
+msgid "exit firefox"
+msgstr "Firefoxを終了|終了|しゅうりょう"
+
+msgctxt "exit firefox.description"
+msgid "Exits Firefox."
+msgstr "Firefox を終了します。"
+
+
+#. restart firefox command:
+#. use | to separate multiple name values:
+msgctxt "restart firefox.names"
+msgid "restart firefox"
+msgstr "Firefoxを再起動|再起動|さいきどう|Firefoxをリスタート|リスタート"
+
+msgctxt "restart firefox.description"
+msgid "Restarts Firefox."
+msgstr "Firefox を再起動します。"
+
+
+#. close window command:
+#. use | to separate multiple name values:
+msgctxt "close window.names"
+msgid "close window"
+msgstr "ウィンドウを閉じる|ウィンドウを閉じて|ウィンドウを閉じろ|ウインドウを閉じる|ウインドウを閉じて|ウインドウを閉じろ"
+
+msgctxt "close window.description"
+msgid "Closes current window."
+msgstr "現在のウィンドウを閉じます。"
+
+
+#. fullscreen command:
+#. use | to separate multiple name values:
+msgctxt "fullscreen.names"
+msgid "fullscreen"
+msgstr "全画面表示|フルスクリーン"
+
+msgctxt "fullscreen.description"
+msgid "Toggles fullscreen mode."
+msgstr "フルスクリーンモードに切り替えます。"
+
+
+#. switch to tab command:
+#. use | to separate multiple name values:
+msgctxt "switch to tab.names"
+msgid "switch to tab"
+msgstr "タブ切り替え"
+
+msgctxt "switch to tab.description"
+msgid "Switches to the tab whose title or URL matches the input."
+msgstr "指定したタイトルまたは URL にマッチするタブに切り替えます。"
+
+
+#. close tab command:
+#. use | to separate multiple name values:
+msgctxt "close tab.names"
+msgid "close tab"
+msgstr "タブを閉じる|タブを閉じて|タブを閉じろ"
+
+msgctxt "close tab.description"
+msgid "Closes the tab whose title or URL matches the input or the current tab if no tab matches."
+msgstr "指定したタイトルまたは URL にマッチするタブを閉じます。指定が無ければ現在のタブを閉じます。"
+
+
+#. close all tabs with command:
+#. use | to separate multiple name values:
+msgctxt "close all tabs with.names"
+msgid "close all tabs with"
+msgstr "関連タブを閉じる|関連タブを閉じて|関連タブを閉じろ"
+
+msgctxt "close all tabs with.description"
+msgid "Closes all open tabs that have the given word in common."
+msgstr "指定した単語を含むタブをすべて閉じます。"
+
+msgctxt "close all tabs with.execute"
+msgid "${num} tabs closed."
+msgstr "${num} 個のタブを閉じました。"
+
+
+#. count tabs command:
+#. use | to separate multiple name values:
+msgctxt "count tabs.names"
+msgid "count tabs"
+msgstr "タブ数をカウントする|タブ数をカウントして|タブ数をカウントしろ|タブ数カウント"
+
+msgctxt "count tabs.description"
+msgid "Counts the number of opened tabs. Takes an optional filter term to count number of tabs matching filter term."
+msgstr "開いているタブの数を数えます。または指定した単語を含むタブの数を数えます。"
+
+# added manually by mitcho
+# template in _count: no msgctxt as it is shared between preview + execute
+msgid "<div class=\"count-tabs\"><b>${count}</b> tab{if count > 1}s{/if} {if html}matching <b>${html}</b>{else}total{/if}</b>.</div>"
+msgstr "<div class=\"count-tabs\"><b>${count}</b>個のタブ{if html}に一致しました: <b>${html}</b>{else}が開いています。{/if}</div>"
+
+
+#. refresh command:
+#. use | to separate multiple name values:
+msgctxt "refresh.names"
+msgid "refresh|reload"
+msgstr "更新|再読み込み|ページを更新する|ページを更新して|ページを更新しろ"
+
+msgctxt "refresh.description"
+msgid "Refreshes the current page."
+msgstr "現在のページを再度読み込みます。"
+
+
+#. bookmark command:
+#. use | to separate multiple name values:
+msgctxt "bookmark.names"
+msgid "bookmark"
+msgstr "ブックマークに追加する|ブックマークに追加して|ブックマークに追加しろ|お気に入りに追加する|お気に入りに追加して|お気に入りに追加しろ"
+
+msgctxt "bookmark.description"
+msgid "Adds the current page to bookmarks."
+msgstr "現在のページをブックマークに追加します。"
+
+msgctxt "bookmark.execute"
+msgid "Page could not be bookmarked!"
+msgstr "ブックマークに追加できませんでした！"
+
+
+#. print command:
+#. use | to separate multiple name values:
+msgctxt "print.names"
+msgid "print"
+msgstr "印刷する|印刷して|印刷しろ|プリントする|プリントして|プリントしろ"
+
+msgctxt "print.description"
+msgid "Prints the current page."
+msgstr "現在のページを印刷します。"
+
+
+#. go back command:
+#. use | to separate multiple name values:
+msgctxt "go back.names"
+msgid "go back"
+msgstr "戻る|戻って|戻れ"
+
+msgctxt "go back.description"
+msgid "Goes back in history."
+msgstr "履歴を前へ戻ります。"
+
+# added manually by mitcho
+msgctxt "go back.preview"
+msgid "Go back ${num} step{if num > 1}s{/if} in history."
+msgstr "履歴を ${num} ステップ戻ります。"
+
+#. go forward command:
+#. use | to separate multiple name values:
+msgctxt "go forward.names"
+msgid "go forward"
+msgstr "進む|進める|進んで|進めて|進め|進めろ"
+
+msgctxt "go forward.description"
+msgid "Goes forward in history."
+msgstr "履歴を次へ進みます。"
+
+# added manually by mitcho
+msgctxt "go forward.preview"
+msgid "Go forward ${num} step{if num > 1}s{/if} in history."
+msgstr "履歴を ${num} ステップ進みます。"
+
+
+#. go home command:
+#. use | to separate multiple name values:
+msgctxt "go home.names"
+msgid "go home"
+msgstr "ホームページへ移動"
+
+msgctxt "go home.description"
+msgid "Goes to home page."
+msgstr "ホームページへ移動します。"
+
+
+#. zoom command:
+#. use | to separate multiple name values:
+msgctxt "zoom.names"
+msgid "zoom"
+msgstr "ズーム|ズームして|ズームする|ズームしろ|拡大表示|縮小表示"
+
+msgctxt "zoom.description"
+msgid "Zooms the Firefox window in or out."
+msgstr "Firefox ウィンドウを拡大表示または縮小表示します。"
+
+msgctxt "zoom.preview"
+msgid "Zooms the Firefox window to ${text} of its normal size."
+msgstr "Firefox ウィンドウを通常の${text}のサイズにズームします。"
+
+
+#. tag command:
+#. use | to separate multiple name values:
+msgctxt "tag.names"
+msgid "tag"
+msgstr "タグする|タグして|タグしろ|タグを追加する|タグを追加して|タグを追加しろ"
+
+msgctxt "tag.help"
+msgid "Use commas to separate multiple tags."
+msgstr "複数のタグはカンマで区切ってください。"
+
+msgctxt "tag.description"
+msgid "Adds tags to the current page."
+msgstr "現在のページにタグを追加します。"
+
+msgctxt "tag.preview"
+msgid "Describes the current page with{if html} these tags:<p><b>${html}</b></p>{else} tags.{/if}"
+msgstr "現在のページに{if html}次の{/if}タグを追加します{if html}:<p><b>${html}</b></p>{else}。{/if}"
+
+
+#. run bookmarklet command:
+#. use | to separate multiple name values:
+msgctxt "run bookmarklet.names"
+msgid "run bookmarklet|bml"
+msgstr "ブックマークレットを実行する|ブックマークレットを実行して|ブックマークレットを実行しろ|実行する|実行して|実行しろ"
+
+msgctxt "run bookmarklet.help"
+msgid "Enter nothing to reload the list."
+msgstr "リストを更新するには何も入力しないでください。"
+
+msgctxt "run bookmarklet.description"
+msgid "Runs a bookmarklet from your favorites."
+msgstr "ブックマークからブックマークレットを実行します。"
+
+
+#. undo closed tabs command:
+#. use | to separate multiple name values:
+msgctxt "undo closed tabs.names"
+msgid "undo closed tabs|uct"
+msgstr "閉じたタブを開く|閉じたタブを開け|閉じたタブを開け|タブを復元する|タブを復元して|タブを復元しろ|閉じたタブを復元する|閉じたタブを復元して|閉じたタブを復元しろ"
+
+msgctxt "undo closed tabs.help"
+msgid "<ul style=\"list-style-image:none\">\n"
+"    <li>Use accesskey or click to undo.</li>\n"
+"    <li>Type to filter, then execute to undo all.</li>\n"
+"    </ul>"
+msgstr "<ul style=\"list-style-image:none\">\n"
+"<li>アクセスキーを入力するかクリックしてください。</li>\n"
+"<li>タイトルか URL で絞り込めます。</li>\n"
+"<li>実行で一致した全てのタブを復元します。</li>"
+"</ul>"
+
+msgctxt "undo closed tabs.description"
+msgid "Reopens tabs you've closed recently."
+msgstr "最近閉じたタブを開きます。"
+
+msgctxt "undo closed tabs.preview"
+msgid "No closed tabs."
+msgstr "閉じたタブはありません。"
+
+msgctxt "undo closed tabs.preview"
+msgid "No matched tabs."
+msgstr "マッチするタブはありません。"
+
+
+#. check livemark command:
+#. use | to separate multiple name values:
+msgctxt "check livemark.names"
+msgid "check livemark"
+msgstr "ライブブックマークを確認|フィードを確認|フィード更新"
+
+msgctxt "check livemark.help"
+msgid "Execute to open the site."
+msgstr "実行するとそのサイトを開きます。"
+
+msgctxt "check livemark.description"
+msgid "Checks your livemarks."
+msgstr "ライブブックマーク (フィード) の更新を確認します。"
+
+

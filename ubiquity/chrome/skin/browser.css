@@ -1,0 +1,17 @@
+#ubiquity-transparent-panel {
+  -moz-appearance: none;
+  background-color: transparent;
+  border-width: 0px;
+}
+
+#ubiquity-toolbarbutton {
+  list-style-image: url("chrome://ubiquity/skin/icons/ubiquibot24.png");
+}
+toolbar[iconsize="small"] #ubiquity-toolbarbutton > .toolbarbutton-icon {
+  list-style-image: url("chrome://ubiquity/skin/icons/favicon.ico");
+  width:  16px;
+  height: 16px;
+}
+#ubiquity-toolbarbutton:hover {
+  opacity: 0.9;
+}

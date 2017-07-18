@@ -1,0 +1,268 @@
+# general.po
+# 
+# Localizers:
+# Christian Sonne <cers@geeksbynature.dk>
+
+msgid ""
+msgstr ""
+"Project-Id-Version: Ubiquity 0.5\n"
+"POT-Creation-Date: 2009-06-20 00:47+0900\n"
+
+#. bold command:
+#. use | to separate multiple name values:
+msgctxt "bold.names"
+msgid "bold"
+msgstr "Fed"
+
+msgctxt "bold.description"
+msgid "If you're in a rich-text-edit area, makes the selected text bold."
+msgstr "Hvis du befinder dig i et formateret tekstredigerings-område, gør dette den markerede tekst fed."
+
+msgctxt "bold.execute"
+msgid "You're not in a rich text editing field."
+msgstr "Du befinder dig ikke i et formateret tekstredigerings-område."
+
+
+#. italicize command:
+#. use | to separate multiple name values:
+msgctxt "italicize.names"
+msgid "italicize"
+msgstr "kursiv"
+
+msgctxt "italicize.description"
+msgid "If you're in a rich-text-edit area, makes the selected text italic."
+msgstr "Hvis du befinder dig i et formateret tekstredigerings-område, gør dette den markerede tekst kursiv"
+
+msgctxt "italicize.execute"
+msgid "You're not in a rich text editing field."
+msgstr "Du befinder dig ikke i et formateret tekstredigerings-område."
+
+
+#. underline command:
+#. use | to separate multiple name values:
+msgctxt "underline.names"
+msgid "underline"
+msgstr "understreg"
+
+msgctxt "underline.description"
+msgid "If you're in a rich-text-edit area, underlines the selected text."
+msgstr "Hvis du befinder dig i et formateret tekstredigerings-område, understreger dette den markerede tekst"
+
+msgctxt "underline.execute"
+msgid "You're not in a rich text editing field."
+msgstr "Du befinder dig ikke i et formateret tekstredigerings-område."
+
+
+#. highlight command:
+#. use | to separate multiple name values:
+msgctxt "highlight.names"
+msgid "highlight|hilite"
+msgstr "fremhæv"
+
+msgctxt "highlight.description"
+msgid "Highlights your current selection, like <span style=\"background: yellow; color: black;\">this</span>."
+msgstr "Fremhæver din nuværende markering, således <span style=\"background: yellow; color: black;\">som dette</span>."
+
+
+#. undo text edit command:
+#. use | to separate multiple name values:
+msgctxt "undo text edit.names"
+msgid "undo text edit"
+msgstr "fortryd tekst redigering"
+
+msgctxt "undo text edit.description"
+msgid "If you're in a rich-text-edit area, undoes your latest style/formatting or page-editing changes."
+msgstr "Fortryder din seneste stil/formaterings- eller side-redigerings ændringer."
+
+msgctxt "undo text edit.execute"
+msgid "You're not in a rich text editing field."
+msgstr "Du befinder dig ikke i et formateret tekstredigerings-område."
+
+
+#. redo text edit command:
+#. use | to separate multiple name values:
+msgctxt "redo text edit.names"
+msgid "redo text edit"
+msgstr "gendan tekst redigering"
+
+msgctxt "redo text edit.description"
+msgid "If you're in a rich-text-edit area, redoes your latest style/formatting or page-editing changes."
+msgstr "Gendanner din seneste stil/formaterings- eller side-redigerings ændringer."
+
+msgctxt "redo text edit.execute"
+msgid "You're not in a rich text editing field."
+msgstr "Du befinder dig ikke i et formateret tekstredigerings-område."
+
+
+#. count words command:
+#. use | to separate multiple name values:
+msgctxt "count words.names"
+msgid "count words|word count"
+msgstr "tæl ord"
+
+msgctxt "count words.description"
+msgid "Displays the number of words in a selection."
+msgstr "Viser antallet af ord i en markering"
+
+msgctxt "count words.preview"
+msgid "<b>${num}</b> words"
+msgstr "${num} ord"
+
+msgctxt "count words.preview"
+msgid "Displays the number of words in a selection."
+msgstr "Viser antallet af ord i en markering"
+
+msgctxt "count words.execute"
+msgid "${num} words"
+msgstr "${num} ord"
+
+msgctxt "count words.execute"
+msgid "No words selected."
+msgstr "Ingen ord markeret"
+
+
+#. link to wikipedia command:
+#. use | to separate multiple name values:
+msgctxt "link to wikipedia.names"
+msgid "link to wikipedia"
+msgstr "link til wikipedia"
+
+msgctxt "link to wikipedia.description"
+msgid "Turns a phrase into a link to the matching Wikipedia article."
+msgstr "Forvandler en markering til et link til den tilsvarende Wikipedia artikel."
+
+
+#. calculate command:
+#. use | to separate multiple name values:
+msgctxt "calculate.names"
+msgid "calculate|gcalculate"
+msgstr "Udregn"
+
+msgctxt "calculate.help"
+msgid "Try <code>22/7, 25% of 700, sin(sqrt(ln(pi))), (1+i)^3, 15 mod 9, (5 choose 2) / 3!, speed of light in miles per hour, 3 dollars in euros, 242 in hex, MCMXVI in decimal</code>."
+msgstr "Prøv <code>22/7, 25% of 700, sin(sqrt(ln(pi))), (1+i)^3, 15 mod 9, (5 choose 2) / 3!, speed of light in miles per hour, 3 dollars in euros, 242 in hex, MCMXVI in decimal</code>."
+"Bemærk: Udregn genkender kun engelsk input"
+
+msgctxt "calculate.description"
+msgid "Calculates using\n"
+"<a href=\"http://www.googleguide.com/help/calculator.html\">Google Calculator</a>\n"
+"which has all the features of a scientific calculator,\n"
+"    knows constants such as the speed of light,\n"
+"    and can convert between units and currencies.\n"
+"<br/>\n"
+"Uses\n"
+"<a href=\"http://jsfromhell.com/classes/math-parser\">MathParser</a>\n"
+"instead for simple expressions like\n"
+"<code>22/7</code>\n"
+"."
+msgstr "Udregner ved hjælp af"
+"<a href=\"http://www.googleguide.com/help/calculator.html\">Google Lommeregner</a>\n"
+"    som har indeholder alle egenskaber en videnskabelig lommeregner ville,\n"
+"    kender konstanter som f.eks. lysets hastighed,\n"
+"    og kan konvertere mellem enheder og møntenheder.\n"
+"<br/>\n"
+"Bruger\n"
+"<a href=\"http://jsfromhell.com/classes/math-parser\">MathParser</a>\n"
+"i stedet for simple udregninger, såsom\n"
+"<code>22/7</code>\n"
+"."
+
+
+#. translate command:
+#. use | to separate multiple name values:
+msgctxt "translate.names"
+msgid "translate"
+msgstr "oversæt"
+
+msgctxt "translate.help"
+msgid "You can specify the language to translate to,\n"
+"    and the language to translate from.\n"
+"    For example, try issuing \"translate mother from english to chinese\".\n"
+"    If you leave out the languages, it will try to guess what you want.\n"
+"    It works on selected text in any web page,\n"
+"    but there's a limit (a couple of paragraphs)\n"
+"    to how much it can translate a selection at once.\n"
+"    If you want to translate a lot of text, leave out the input and\n"
+"    it will translate the whole page."
+msgstr "Du kan specificere sproget der skal oversættes til,\n"
+"    samt sproget der skal oversættes fra.\n"
+"    For eksempel, prøv at udstede kommandoen \"oversæt mor fra dansk til kinesisk\".\n"
+"    Hvis du undlader et eller flere sprog, vil den forsøge at gætte hvilke du vil have.\n"
+"    Det virker på markeret tekst på en vilkårlig hjemmeside,\n"
+"    men der er en grænse (et par afsnit)\n"
+"    for hvor meget tekst du kan oversætte af gangen.\n"
+"    Hvis du vil oversætte en masse tekst, undlad da at give kommandoen input,\n"
+"    da den så vil oversætte hele siden."
+
+
+msgctxt "translate.description"
+msgid "Translates from one language to another."
+msgstr "Oversætter fra et sprog til et andet."
+
+msgctxt "translate.preview"
+msgid "Translates ${url} into <b>${toLang}</b>."
+msgstr "Oversætter ${url} til <b>${toLang}</b>."
+
+msgctxt "translate.preview"
+msgid "Replaces the selected text with the <b>${toLang}</b> translation:"
+msgstr "Erstatter den markerede tekst med den <b>${toLang}</b> oversættelse:"
+
+# shared strings in the function translateTo
+# manually added by mitcho
+msgid "Translation error: ${error}"
+msgstr "Fejl i oversættelse: ${error}"
+
+msgid "invalid translation language pair"
+msgstr "ugyldige sprogvalg til oversættelse"
+
+msgid "could not reliably detect source language"
+msgstr "Kunne ikke bestemme kilde-sprog"
+
+
+#. create bookmarklet command command:
+#. use | to separate multiple name values:
+msgctxt "create bookmarklet command.names"
+msgid "create bookmarklet command"
+msgstr "opret bookmarklet kommando"
+
+msgctxt "create bookmarklet command.help"
+msgid "For instance, if you have a bookmarklet called 'press this', you can say 'create bookmarklet command from press this'."
+msgstr "Hvis du f.eks. har et bookmarklet kaldet 'klik dette', kan du udstede kommandoen 'opret bookmarklet kommando fra klik dette'."
+
+msgctxt "create bookmarklet command.description"
+msgid "Creates a new Ubiquity command from a bookmarklet."
+msgstr "Opretter en ny Ubiquity kommando ud fra et bookmarklet."
+
+
+#. create search command command:
+#. use | to separate multiple name values:
+msgctxt "create search command.names"
+msgid "create search command"
+msgstr "Opret søge kommando"
+
+msgctxt "create search command.help"
+msgid "<ol style=\"list-style-image:none\">\n"
+"  <li>Select a searchbox.</li>\n"
+"  <li>Say 'create search command mysearch'.</li>\n"
+"  <li>Execute.</li>\n"
+"  <li>You now have a command called 'mysearch'.</li>\n"
+"</ol>"
+msgstr "<ol style=\"list-style-image:none\">\n"
+"  <li>Vælg et søgefelt.</li>\n"
+"  <li>Udsted kommandoen 'opret søge kommando minsøgning'.</li>\n
+"  <li>Du har nu en kommando kaldet 'minsøgning'</li>\n"
+"</ol>"
+
+msgctxt "create search command.description"
+msgid "Creates a new Ubiquity command from a focused search-box and lets you set the command name."
+msgstr "Opretter en ny søge-kommando ud fra det valgte søge-felt og lader dig vælge et kommando-navn."
+
+msgctxt "create search command.preview"
+msgid "Creates a new search command called <b>${text}</b>"
+msgstr "Opretter en ny søge-kommando kaldet <b>${text}</b>"
+
+msgctxt "create search command.execute"
+msgid "You need to focus a searchbox before running this command."
+msgstr "Du skal vælge et søge-felt før du kører denne kommando."
+
+

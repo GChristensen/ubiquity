@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>ubiquity@labs.mozilla.com</em:id>
+    <em:version>0.6.5g</em:version>
+    <em:type>2</em:type>
+    <em:unpack>true</em:unpack>
+
+    <!-- Target Application this extension can install into,
+         with minimum and maximum supported versions. -->
+    <em:targetApplication><Description>
+      <!--Firefox--><em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+      <em:minVersion>47.0</em:minVersion>
+      <em:maxVersion>*</em:maxVersion>
+    </Description></em:targetApplication>
+
+    <!-- Front End MetaData -->
+    <em:name>Ubiquity</em:name>
+    <em:description>An extension that allows for the use of dynamic commands in Firefox.</em:description>
+    <em:creator>Mozilla Corporation</em:creator>
+    <em:iconURL>chrome://ubiquity/skin/icons/ubiquibot-square.png</em:iconURL>
+    <em:homepageURL>https://wiki.mozilla.org/Labs/Ubiquity</em:homepageURL>
+    <em:optionsURL>chrome://ubiquity/content/preferences.xul</em:optionsURL>
+
+    <em:translator>egamonal, toniher (ca)</em:translator>
+    <em:translator>cers (da-DK)</em:translator>
+    <em:translator>cmos (de)</em:translator>
+    <em:translator>queltosh (es-ES)</em:translator>
+    <em:translator>JTojnar (cs-CZ)</em:translator>
+    <em:translator>AtteL (fi-FI)</em:translator>
+    <em:translator>ccorazza, Frederic, Goofy, myahoo (fr)</em:translator>
+    <em:translator>moZes (fy-NL)</em:translator>
+    <em:translator>kkemenczy (hu)</em:translator>
+    <em:translator>gialloporpora (it-IT)</em:translator>
+    <em:translator>mar, powchin, satyr (ja)</em:translator>
+    <em:translator>nathansamson (nl)</em:translator>
+    <em:translator>teo (pl-PL)</em:translator>
+    <em:translator>camponez (pt)</em:translator>
+    <em:translator>brunomagrani, fernph (pt-BR)</em:translator>
+    <em:translator>mrfyda (pt-PT)</em:translator>
+    <em:translator>Quicksilver tears, SeLarin (ru-RU)</em:translator>
+    <em:translator>yfdyh000 (zh-CN)</em:translator>
+    <em:translator>kourge (zh-TW)</em:translator>
+  </Description>
+</RDF>

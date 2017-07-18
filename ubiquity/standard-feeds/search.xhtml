@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Ubiquity Web Search Commands</title>
+  <link rel="commands" href="search.xhtml"/>
+</head>
+<style>
+  div[id] {display: none}
+  script {display: block; white-space: pre; font-family: monospace}
+</style>
+<body>
+<p>This XHTML feed contains commands for searching the Web.</p>
+
+<div id="amazon-search">
+<style>
+  ol, ul {list-style: none; margin: 0; padding: 0}
+  img {float: right; margin: 0 0 0.5em 0.5em}
+  kbd {vertical-align: middle; text-transform: uppercase}
+  kbd:after {content: ":"}
+  kbd, .price {font-weight: bolder}
+  .item {margin-top: 0.4em; clear: right}
+  .feature {margin-top: 0.2em}
+  .price, .author, .label, .feature {font-size: 88%}
+  .author:before {content: "by "}
+  .feature:before {content: "\2022  "}
+</style>
+${matchMessage}
+<ol>
+{for item in items}
+  <li class="item">
+    {if item.image}
+      <a href="${item.url}"><img src="${item.image.src}" border="0"
+        height="${item.image.height}" width="${item.image.width}"/></a>
+    {/if}
+    <kbd>${item.key}</kbd>
+    <a href="${item.url}" accesskey="${item.key}">${item.title}</a>
+    {if item.price}
+      <nobr class="price">
+        ${item.price.amount} (${item.price.currency})
+      </nobr>
+    {/if}
+    {if item.author}
+      <div class="author">${item.author}</div>
+    {/if}
+    {if item.label}
+      <div class="label">${item.label}</div>
+    {/if}
+    <ul>
+    {for feature in item.features}
+      <li class="feature">${feature}</li>
+    {/for}
+    </ul>
+  </li>
+{/for}
+</ol>
+</div>
+
+<div id="flickr-search">
+<b>${foundMessage}</b><br/><br/>
+<table style="border-width: 0px;">
+{for photo in photos}
+  {if photo_index % numcols == 0}
+  <tr height="100">
+  {/if}
+  <td>
+    <a href="http://www.flickr.com/photos/${photo.owner}/${photo.id}" title="${photo.title|escape}">
+      <img src="http://farm${photo.farm}.static.flickr.com/${photo.server}/${photo.id}_${photo.secret}_t.jpg" />
+    </a>
+  </td>
+  {if photo_index % numcols == (numcols - 1)}
+  </tr>
+  {/if}
+{/for}
+</table>
+</div>
+
+<div id="weather-search">
+  <style>
+  .mainimg { float: left }
+  .weather { font-family: arial, helvetica, sans-serif }
+  .forecast { clear: both }
+  .forecast th, .forecast td { text-align: center }
+  .forecast .icon { text-align: right }
+  .forecast img { width: 75% }
+  .temp { font-size: 60px }
+  .high { color: #f66 }
+  .low  { color: #66f }
+  </style>
+  <div class="weather">
+    ${weatherMessage}<br />
+    {if w.img}<img class="mainimg" src="${w.img}"/>{/if}
+    <div class="temp">${w.temp}</div>
+    <div class="extra">
+      ${w.condition}<br/>
+      ${w.wind}<br/>
+      ${w.humidity}<br/>
+    </div>
+    <table class="forecast">
+    <tr>{for day in w.forecast}
+      <td class="icon">{if day.img}<img src="${day.img}"/>{/if}</td>
+    {/for}</tr>
+    <tr>{for day in w.forecast}
+      <th class="label">${day.label}</th>
+    {/for}</tr>
+    <tr>{for day in w.forecast}
+      <td class="condition">${day.condition}</td>
+    {/for}</tr>
+    <tr>{for day in w.forecast}
+      <td class="high">${day.high}</td>
+    {/for}</tr>
+    <tr>{for day in w.forecast}
+      <td class="low">${day.low}</td>
+    {/for}</tr>
+    </table>
+  </div>
+</div>
+
+<div id="wikipedia-search">
+<style>
+.wikipedia { margin: 0 }
+.title { clear: left; margin-top: 0.4em }
+.title a { font-weight: bold }
+.key:after {content: ":"}
+.summary { margin: 0.2em 0 0 1em; font-size: smaller }
+.thumbnail {
+  float: left; max-width: 80px; max-height: 80px; background-color: white;
+  margin-right: 0.2em;
+}
+</style>
+<dl class="wikipedia">
+${foundMessage}
+{for article in results}
+  <dt class="title">
+    <span class="key">${article.key}</span>
+    <a href="${article.title|wikilink}" accesskey="${article.key}"
+    >${article.title}</a>
+  </dt>
+  <dd class="summary" wikiarticle="${article.title}">
+    <i>${retrievingArticleSummary}</i>
+  </dd>
+{forelse}
+  <p class='error'>${noArticlesFound}</p>
+{/for}
+</dl>
+</div>
+
+<div id="youtube-search">
+  <p>
+   Found <b>${numresults}</b> YouTube Videos matching <b>${query}</b>
+  </p>
+  {for entry in results}
+  <div style="clear: both; font-size: x-small">
+   <a style="font-size: small; font-weight:bold"
+      href="https://www.youtube.com/watch?v=${entry.id.videoId}">
+   <img style="float:left; margin: 0 10px 5px 0; border: none"
+        src="${entry.snippet.thumbnails.default.url}" />
+   ${entry.snippet.title}
+   </a>
+   <p>
+      ${entry.snippet.description}
+   </p>
+  </div>
+  {/for}
+</div>
+
+<div id="google-images">
+<style>
+.navi, .thumbs {text-align: center}
+.prev, .next {position: absolute}
+.navi {font-weight: bold}
+.prev {left:  0}
+.next {right: 0}
+.thumbs a {
+  display: inline-block; vertical-align: top; position: relative;
+  margin: 0 1px 2px; padding: 0;
+}
+.thumbs a::after {
+  content: attr(accesskey);
+  position: absolute; top: 0; left: 0;
+  padding: 0 4px 2px 3px; border-bottom-right-radius: 6px;
+  opacity: 0.5; color: #fff; background-color: #000;
+  font:bold medium monospace;
+}
+</style>
+<div class="navi">
+  ${range}
+  <input type="button" class="prev" value="&lt;" accesskey="&lt;"/>
+  <input type="button" class="next" value="&gt;" accesskey="&gt;"/>
+</div>
+<div class="info">${info}</div>
+<div class="thumbs">{for a in images}${a.outerHTML}{/for}</div>
+</div>
+
+<div id="map-css">
+body {margin:0; padding:0}
+#buttons {position:absolute; top:4px; left:64px; opacity:0.6}
+#buttons > input:not([accesskey=c]):not([accesskey=v])
+  {position:absolute; top:-9999px}
+#buttons > input {font:bold small monospace; padding:0}
+.adp-listsel {color:#fff !important; background-color:#666 !important}
+.adp-list {color:#ddd !important; background-color:#333 !important}
+.adp-list td {font-size:88%}
+.adp-placemark {
+  color:#eee !important; background-color:#555 !important; font-size:112%;
+}
+.adp-summary, .adp-directions {color:#ccc; font-size:96%}
+.adp-listheader, .adp-legal {display:none}
+#trips, #addrs {
+  max-width: 40%;
+  position:absolute; bottom:12px; right:4px; z-index:5;
+  background-color:#000; opacity:0.666; font-size:76%;
+  border-radius:6px;
+}
+#trips {max-height:88%; overflow-y:auto}
+#addrs, #trips, #trips td {color:#eee}
+#addrs {padding:0 3px; border-radius:8px; background-color:#000}
+#addrs > a {display:block; text-decoration:none; color:#ccc}
+#addrs > a::before {
+  content:attr(accesskey); margin-right:0.4em;
+  font:bold monospace; text-decoration:underline}
+#addrs > .active {color:#fff}
+#addrs > .active::before {text-decoration:none}
+</div>
+
+<script type="?" class="commands"><![CDATA[
+
+const SEARCH_TERM = _("search term")
+    , H = Utils.escapeHtml
+
+// TODO this should use a provider plugin
+CmdUtils.CreateCommand({
+  names: ["search", "find", "look for"],
+  description: "Search using your installed search engines",
+  help: "Specify any Open Search engine you have installed by entering " +
+        "e.g. 'search with google', 'search with yahoo', etc.",
+  icon: "chrome://ubiquity/skin/icons/search.png",
+  arguments: [
+    {role: "object", nountype: noun_arb_text, label: SEARCH_TERM},
+    {role: "instrument", nountype: noun_type_search_engine},
+  ],
+  preview: function search_preview(previewBlock, {object, instrument}) {
+    previewBlock.innerHTML = _(
+      "Search using <b>${engine}</b> for:<br /><b>${query}</b>",
+      {engine: instrument.data.name, query : object.text});
+  },
+  execute: function search_execute({object, instrument}) {
+    var submission = instrument.data.getSubmission(object.text, null);
+    Utils.openUrlInBrowser(submission.uri.spec, submission.postData);
+  }
+});
+
+CmdUtils.makeSearchCommand({
+  name: "Google",
+  url: "http://www.google.com/search?q={QUERY}",
+  icon: "chrome://ubiquity/skin/icons/google.ico",
+  description: "Searches Google for your words.",
+  help: "You can use the keyboard shortcut ctrl + alt + number to open one " +
+        "of the Google results shown in the preview.",
+  parser: {
+    container  : ".rc",
+    title      : "h3",
+    body       : ".st",
+    maxResults : 10,
+  },
+});
+
+const ARTICLE_ERROR = _("Error retrieving summary");
+
+function fetchWikipediaArticle(previewBlock, articleTitle, langCode) {
+  var apiUrl = "http://" + langCode + ".wikipedia.org/w/api.php";
+  var apiParams = {
+    format: "json",
+    action: "parse",
+    page: articleTitle
+  };
+
+  CmdUtils.previewAjax(previewBlock, {
+    type: "GET",
+    url: apiUrl,
+    data: apiParams,
+    dataType: "json",
+    error: function() {
+      previewBlock.innerHTML = "<p class='error'>" + ARTICLE_ERROR + "</p>";
+    },
+    success: function(responseData) {
+      //remove relative <img>s beforehand to suppress
+      //the "No chrome package registered for ..." message
+      var parse = jQuery(("<div>" + responseData.parse.text["*"])
+                         .replace(/<img src="\/[^>]+>/g, ""));
+      //take only the text from summary because links won't work either way
+      var articleSummary = parse.find("p:first").text();
+      //remove citations [3], [citation needed], etc.
+      articleSummary = articleSummary.replace(/\[.+?\]/g, "");
+      //TODO: also remove audio links (.audiolink & .audiolinkinfo)
+      //TODO: remove "may refer to" summaries
+      var articleImageSrc = (parse.find(".infobox img").attr("src") ||
+                             parse.find(".thumbimage") .attr("src") || "");
+      previewBlock.innerHTML =
+        (articleImageSrc &&
+         '<img src="'+ H(articleImageSrc) +'" class="thumbnail"/>') +
+        H(articleSummary);
+    }
+  });
+}
+
+CmdUtils.CreateCommand({
+  names: ["Wikipedia", "lookup"],
+  arguments: [
+    {role: "object", nountype: noun_arb_text, label: SEARCH_TERM},
+    {role: "format", nountype: noun_type_lang_wikipedia}],
+  homepage: "http://theunfocused.net/moz/ubiquity/verbs/",
+  author: {name: "Blair McBride", email: "blair@theunfocused.net"},
+  contributors: ["Viktor Pyatkovka"],
+  license: "MPL",
+  icon: "chrome://ubiquity/skin/icons/wikipedia.ico",
+  description: "Searches Wikipedia for your words, in a given language.",
+  preview: function wikipedia_preview(previewBlock, args) {
+    var searchText = Utils.trim(args.object.text);
+    if (!searchText) {
+      previewBlock.innerHTML = _("Searches Wikipedia in ${lang}.",
+                                 {lang: args.format.html || "English"});
+      return;
+    }
+    var previewData = {query: args.object.html};
+    previewBlock.innerHTML = _("Searching Wikipedia for <b>${query}</b> ...",
+                               previewData);
+    var apiParams = {
+      format: "json",
+      action: "query",
+      list: "search",
+      srlimit: 5, // is this a good limit?
+      srwhat: "text",
+      srsearch: searchText
+    };
+
+    function onerror() {
+      previewBlock.innerHTML =
+        "<p class='error'>" + _("Error searching Wikipedia") + "</p>";
+    }
+
+    var langCode = args.format.data || "en";
+    var apiUrl = "http://" + langCode + ".wikipedia.org/w/api.php";
+
+    CmdUtils.previewAjax(previewBlock, {
+      type: "GET",
+      url: apiUrl,
+      data: apiParams,
+      dataType: "json",
+      error: onerror,
+      success: function wikipedia_success(searchResponse) {
+        if (!("query" in searchResponse && "search" in searchResponse.query)) {
+          onerror();
+          return;
+        }
+
+        function generateWikipediaLink(title) {
+          return "http://" + langCode + ".wikipedia.org/wiki/" +
+                 title.replace(/ /g, "_")
+        }
+
+        (previewData.results = searchResponse.query.search)
+          .forEach(function genKey(o, i) { o.key = i + 1 });
+        previewData._MODIFIERS = {wikilink: generateWikipediaLink};
+        previewData.foundMessage =
+          _("Wikipedia articles found matching <b>${query}</b>:", previewData);
+        previewData.retrievingArticleSummary =
+          _("Retreiving article summary...");
+        previewData.noArticlesFound = _("No articles found.");
+
+
+        previewBlock.innerHTML = CmdUtils.renderTemplate(
+          feed.dom.getElementById("wikipedia-search").innerHTML,
+          previewData);
+
+        jQuery("dd", previewBlock).each(function eachDD() {
+          var article = this.getAttribute("wikiarticle");
+          fetchWikipediaArticle(this, article, langCode);
+        });
+      }
+    });
+  },
+  execute: function wikipedia_execute(args) {
+    var lang = args.format.data || "en";
+    var searchUrl = "http://" + lang + ".wikipedia.org/wiki/Special:Search";
+    var searchParams = {search: args.object.text};
+    Utils.openUrlInBrowser(searchUrl + Utils.paramsToString(searchParams));
+  }
+});
+
+CmdUtils.makeSearchCommand({
+  names: ["Yahoo!"],
+  url: "http://search.yahoo.com/search?ei=UTF-8&p={QUERY}",
+  defaultUrl: "http://www.yahoo.com",
+  icon: "chrome://ubiquity/skin/icons/yahoo.ico",
+  description: "Searches <a href='http://search.yahoo.com'>Yahoo!</a> " +
+               "for pages matching your words.",
+  parser: {
+    container  : ".dd.algo",
+    title      : "h3",
+    body       : ".compText",
+    maxResults : 10,
+  },
+});
+
+var noun_type_amazon_com_index = CmdUtils.NounType("index", {
+  All: 0,
+  Apparel: 1036592,
+  Appliances: 2619525011,
+  ArtsAndCrafts: 2617941011,
+  Automotive: 15690151,
+  Baby: 165796011,
+  Beauty: 11055981,
+  Books: 1000,
+  Classical: 301668,
+  Collectibles: 4991425011,
+  DigitalMusic: 195208011,
+  DVD: 2625373011,
+  Electronics: 493964,
+  GourmetFood: 3580501,
+  Grocery: 16310101,
+  HealthPersonalCare: 3760931,
+  HomeGarden: 285080,
+  Industrial: 228239,
+  Jewelry: 3880591,
+  KindleStore: 133141011,
+  Kitchen: 1063498,
+  LawnGarden: 2972638011,
+  Magazines: 599872,
+  Miscellaneous: 10304191,
+  MobileApps: 2350149011,
+  MP3Downloads: 195211011,
+  Music: 301668,
+  MusicalInstruments: 11091801,
+  OfficeProducts: 1084128,
+  OutdoorLiving: 1063498,
+  PCHardware: 493964,
+  PetSupplies: 1063498,
+  Photo: 493964,
+  Software: 409488,
+  SportingGoods: 3375251,
+  Tools: 468240,
+  Toys: 493964,
+  VHS: 404272,
+  Video: 130,
+  VideoGames: 493964,
+  Watches: 377110011,
+  Wireless: 508494,
+  WirelessAccessories: 13900851,
+}, "All");
+
+var Amazon = "http://www.amazon.com/";
+var AmazLink = "Amazon.com".link(Amazon);
+var AWS_ENDPOINT = "ecs.amazonaws.com";
+var AWS_REQUESTURI = "/onca/xml";
+// This key is linked to Satyr's AWS account (only free services are enabled).
+// Please don't reuse and/or abuse it. Get your own AWS key instead.
+var AWS_KEY = "0SP5F78NM10ZVNWWG482";
+var AWS_SECRET = "DlSRkBtC3WDAMjA5fVJO4Fg04omvXYVXs49oNPlo";
+
+var amazon_doEscape = aString =>
+  encodeURIComponent(aString).replace(/[!\'()*]+/g, s => escape(s, 0))
+function amazon_signRequest(aParams) {
+  var key;
+  var params = {};
+  for (key in aParams)
+    params[key] = aParams[key];
+  params.Timestamp = new Date().toISOString().slice(0, -5) + "Z";
+  params.AWSAccessKeyId = AWS_KEY;
+  var paramArray = [];
+  for (key in params)
+    paramArray.push(amazon_doEscape(key) + "=" + amazon_doEscape(params[key]));
+  paramArray.sort();
+  var paramString = paramArray.join("&");
+  var sigBaseString =
+    "GET\n" + AWS_ENDPOINT + "\n" + AWS_REQUESTURI + "\n" + paramString;
+  var signature = Utils.signHmac("SHA256", AWS_SECRET, sigBaseString);
+  return ("http://" + AWS_ENDPOINT + AWS_REQUESTURI + "?" +
+          paramString + "&Signature=" + amazon_doEscape(signature));
+}
+
+CmdUtils.CreateCommand({
+  names: ["Amazon.com"],
+  icon: "chrome://ubiquity/skin/icons/amazon.ico",
+  description: "Searches " + AmazLink + " for items matching your words.",
+  help: '<dl><dt>Available Indices</dt><dd><b>'+
+    noun_type_amazon_com_index._list.reduce(function (dd, s) {
+      return dd + s.text + ' '
+    }, '')
+  +'</b></dd></dl>',
+  arguments: [
+    {role: "object", nountype: noun_arb_text, label: SEARCH_TERM},
+    {role: "format", nountype: noun_type_amazon_com_index}],
+  execute: function amazon_execute({object: {text}, format: {data}}) {
+    var url = Amazon + "s/?tag=matyr-20&"
+    if (data) url += "node=" + data + "&"
+    url += "field-keywords=" + encodeURIComponent(text)
+    Utils.openUrlInBrowser(url)
+  },
+  preview: function(previewBlock,
+                    {object: {text, summary}, format: {text: searchIndex}}) {
+    if (!text) return void this.previewDefault(previewBlock);
+
+    var me = this;
+    previewBlock.innerHTML =
+      _("Searching ${AmazLink} for items matching <b>${query}</b>.",
+        {AmazLink: AmazLink, query: summary});
+    CmdUtils.previewAjax(previewBlock, {
+      url: amazon_signRequest({
+        Service: "AWSECommerceService",
+        Version: "2011-08-01",
+        Operation: "ItemSearch",
+        Condition: "All",
+        Merchant: "All",
+        ResponseGroup: "ItemAttributes,Images,Offers",
+        AssociateTag: "matyr-20", // required
+        SearchIndex: searchIndex,
+        Keywords: text,
+      }),
+      dataType: "xml",
+      error: function amazon_error(xhr, info) {
+        previewBlock.innerHTML = (
+          "<p class='error'>" +
+          _("Error searching ${AmazLink}.", {AmazLink: AmazLink}) +
+          "<br/><em>" + xhr.status + " " + xhr.statusText +
+          " (" + info + ")</em></p>");
+        // TODO: think of a better way to localize API errors, if possible.
+      },
+      success: function amazon_success(responseData) {
+        responseData = jQuery(responseData);
+        var errorMessage = responseData.find("Error > Message").text();
+        if (errorMessage) {
+          previewBlock.innerHTML =
+            "<p class='error'>" + _(errorMessage) + "</p>";
+          return;
+        }
+        const MAX_RESULTS = 35; // 1 ~ 9, a ~ z
+        function iter(itemIndex) {
+          var itemDetails = jQuery(this),
+              itemAttrs = itemDetails.find("ItemAttributes"),
+              listPrice = itemDetails.find("OfferSummary > LowestNewPrice"),
+              smallImage = itemDetails.find("SmallImage:first");
+          if (!listPrice.length)
+            listPrice = itemAttrs.find("ListPrice");
+          return {
+            title: itemAttrs.find("Title").text(),
+            url: itemDetails.find("DetailPageURL").text(),
+            key: (itemIndex + 1).toString(MAX_RESULTS + 1),
+            author: itemAttrs.find("Author")
+                    .map(_ => _.textContent).get().join(', '),
+            features: itemAttrs.find("Feature")
+                      .map(_ => _.textContent).get(),
+            label: itemAttrs.find("Label").text(),
+            price: listPrice.length && {
+              amount: listPrice.find("FormattedPrice").text(),
+              currency: listPrice.find("CurrencyCode").text(),
+            },
+            image: smallImage.length && {
+              src: smallImage.find("URL").text(),
+              height: smallImage.find("Height").text(),
+              width: smallImage.find("Width").text(),
+            }
+          };
+        }
+        previewBlock.innerHTML = CmdUtils.renderTemplate(
+          feed.dom.getElementById("amazon-search").innerHTML,
+          { items: (responseData.find("Items > Item").slice(0, MAX_RESULTS)
+                    .map(iter).get()),
+            matchMessage: _(
+              ("Found <b>${numitems}</b> item{if numitems > 1}s{/if} on " +
+               "<a href='http://www.amazon.com/'>Amazon.com</a> " +
+               "matching <b>${query}</b>."),
+              { numitems: responseData.find("Items > TotalResults").text(),
+                query: text }) });
+      }
+    });
+  }
+});
+
+CmdUtils.makeSearchCommand({
+  names: ["YouTube"],
+  url: ("http://www.youtube.com/results?search_type=search_videos" +
+        "&search=Search&search_sort=relevance&search_query={QUERY}"),
+  icon: "chrome://ubiquity/skin/icons/youtube.ico",
+  description: ("Searches <a href='http://www.youtube.com'>YouTube</a> " +
+                "for videos matching your words. Previews the top results."),
+  preview: function(pblock, {object: {text, summary}}) {
+    if (!text) return void this.previewDefault(pblock);
+
+    pblock.innerHTML = _("Searches YouTube for ${it}.", {it: summary.bold()});
+    CmdUtils.previewAjax(pblock, {
+      url: "https://www.googleapis.com/youtube/v3/search",
+      data: {
+        part: "snippet", type: "video", q: text,
+        key: "AIzaSyD0NFadBBZ8qJmWMmNknyxeI0EmIalWVeI",
+      },
+      dataType: "json",
+      success: function youtube_success(data) {
+        pblock.innerHTML = CmdUtils.renderTemplate(
+          feed.dom.getElementById("youtube-search").innerHTML, {
+            results: data.items,
+            query: summary,
+            numresults: data.pageInfo.totalResults,
+          });
+      },
+      error: function youtube_error({statusText}) {
+        pblock.innerHTML =
+          "<p class=error>" + Utils.escapeHtml(statusText);
+      },
+    });
+  },
+});
+
+CmdUtils.makeSearchCommand({
+  name: "Flickr",
+  url: "http://www.flickr.com/search/?w=all&q={QUERY}",
+  icon: "chrome://ubiquity/skin/icons/flickr.ico",
+  description: (
+    "Searches <a href=\"http://www.flickr.com\">Flickr</a> " +
+    "for pictures matching your keywords. Previews the top pictures."),
+  preview: function flickr_preview(previewBlock, {object: {text: inputText}}) {
+    if (!inputText) return void this.previewDefault(previewBlock);
+
+    previewBlock.innerHTML = _("Searching for photos on Flickr...");
+    CmdUtils.previewAjax(previewBlock, {
+      url: "https://www.flickr.com/services/rest/",
+      data: {
+        api_key: "8edd84ec3c9158c2cf283fa16e5b8ca3",
+        format: "json",
+        nojsoncallback: 1,
+        method: "flickr.photos.search",
+        media: "photos",
+        text: inputText,
+        per_page: 12,
+        sort: "relevance",
+      },
+      dataType: "json",
+      error: function flickr_error({statusText}) {
+        previewBlock.innerHTML = (
+          "<p class='error'>" + _("Error searching Flickr.") +
+          " (" + Utils.escapeHtml(statusText) + ")</p>");
+      },
+      success: function flickr_success(responseData) {
+        if (responseData.stat !== "ok") {
+          this.error({statusText: responseData.stat});
+          return;
+        }
+        previewBlock.innerHTML = CmdUtils.renderTemplate(
+          feed.dom.getElementById("flickr-search").innerHTML, {
+            numcols: 4,
+            photos: responseData.photos.photo,
+            foundMessage: _("${nummatches} photos were found on Flickr.",
+                            {nummatches: responseData.photos.total}),
+          });
+      },
+    });
+  },
+});
+
+CmdUtils.makeSearchCommand({
+  names: ["Bugzilla"],
+  url: "https://bugzilla.mozilla.org/buglist.cgi?quicksearch=%s",
+  defaultUrl: "https://bugzilla.mozilla.org",
+  help: "Bugzilla QuickSearch".link(
+    "https://bugzilla.mozilla.org/page.cgi?id=quicksearch.html"),
+  icon: "chrome://ubiquity/skin/icons/mozilla.ico",
+  preview: function bugz_preview(pb, args) {
+    var query = args.object.text.trim(), me = this;
+    if (!query) return void me.previewDefault(pb);
+    var shortUrl = "http://bugzil.la/" +
+      query.replace(/\S+/g, encodeURIComponent).replace(/\s+/g, "+");
+    pb.innerHTML = (
+      '<div id="bugzilla">' +
+      '<input type="button" class="copy" value="Copy" accesskey="C"/> ' +
+      '<a href="' + shortUrl + '" accesskey="H">' + shortUrl + '</a>' +
+      '</div>');
+    pb.querySelector(".copy").addEventListener("click", function bugz_copy() {
+      displayMessage(Utils.clipboard.text = shortUrl, me);
+    }, false);
+  },
+});
+
+CmdUtils.makeSearchCommand({
+  names: ["bing"],
+  url: "http://www.bing.com/search?q=%s",
+  defaultUrl: "http://www.bing.com/",
+  icon: "chrome://ubiquity/skin/icons/bing.ico",
+  parser: {
+    container: ".b_algo",
+    title: "h2 > a",
+    body: ".b_caption",
+    maxResults: 10,
+  },
+});
+
+CmdUtils.makeSearchCommand({
+  name: "IMDb",
+  url: "http://www.imdb.com/find?q=%s",
+  defaultUrl: "http://www.imdb.com",
+  icon: "chrome://ubiquity/skin/icons/imdb.ico",
+  parser: {
+    container  : ".findResult",
+    title      : ".result_text",
+    thumbnail  : ".primary_photo",
+    maxResults : 8,
+  },
+});
+
+
+// -----------------------------------------------------------------
+// WEATHER COMMANDS
+// -----------------------------------------------------------------
+
+var TEMPERATURE_UNITS = ["fahrenheit", "celsius"];
+
+var noun_type_temperature_unit = CmdUtils.NounType("temperature unit",
+                                                   TEMPERATURE_UNITS);
+
+var WEATHER_TYPES = "none|tropical storm|hurricane|severe thunderstorms|thunderstorms|mixed rain and snow|mixed rain and sleet|mixed snow and sleet|freezing drizzle|drizzle|freezing rain|rain|rain|snow flurries|light snow showers|blowing snow|snow|hail|sleet|dust|foggy|haze|smoky|blustery|windy|cold|cloudy|mostly cloudy|mostly cloudy|partly cloudy|partly cloudy|clear|sunny|fair|fair|mixed rain and hail|hot|isolated thunderstorms|scattered thunderstorms|scattered thunderstorms|scattered showers|heavy snow|scattered snow showers|heavy snow|partly cloudy|thundershowers|snow showers|isolated thundershowers".split("|");
+
+var YAHOO_WEATHER_MAP = {
+  "unknown": null,
+  "snow grains": "light snow showers",
+  "ice crystals": "hail",
+  "ice pellets": "hail",
+  mist: "rain",
+  fog: "foggy",
+  smoke: "smoky",
+  "volcanic ash": "haze",
+  "widespread dust": "dust",
+  sand: null,
+  spray: null,
+  "dust whirls": "dust",
+  "showers rain": "rain",
+  sandstorm: null,
+  "low drifting snow": "snow",
+  "low drifting widespread dust": "dust",
+  "low drifting sand": null,
+  "blowing widespread dust": "dust",
+  "blowing sand": null,
+  "rain showers": "scattered showers",
+  "ice pellet showers": "mixed rain and hail",
+  "hail showers": "hail",
+  "small hail showers": "hail",
+  thunderstorm: "thunderstorms",
+  "thunderstorms and rain": "thunderstorms",
+  "thunderstorms and snow": "mixed rain and snow",
+  "thunderstorms and ice pellets": "mixed rain and hail",
+  "thunderstorms with hail": "mixed rain and hail",
+  "thunderstorms with small hail": "mixed rain and hail",
+  "freezing fog": "foggy",
+  "overcast": "cloudy",
+  "scattered clouds": "partly cloudy",
+  "n/a": null,
+  // forcast conditions
+  "flurries": "snow flurries",
+  "freezing rain": "mixed rain and snow",
+  "a thunderstorm": "thunderstorms",
+  hazy: "haze",
+  "mostly sunny": "sunny",
+  "partly sunny": "sunny"
+};
+
+function yahooWeatherImage(condition,dayOrNight) {
+  // dayOrNight must be 'd' or 'n'. By default, it'll be 'd'.
+  var conditionCode = condition.toLowerCase().trim();
+  if (conditionCode != "heavy snow" && conditionCode != "light snow showers")
+    conditionCode = conditionCode.replace(/^(?:heavy|light) /, "");
+  conditionCode = conditionCode.replace(/^chance of /, "");
+
+  // map some Weather Underground weather codes to Yahoo! ones.
+  if (conditionCode in YAHOO_WEATHER_MAP)
+    conditionCode = YAHOO_WEATHER_MAP[conditionCode];
+
+  if (!conditionCode)
+    return null;
+
+  var weatherId = WEATHER_TYPES.indexOf(conditionCode);
+  return ("http://l.yimg.com/us.yimg.com/i/us/nws/weather/gr/" +
+          weatherId + (dayOrNight || "d") + ".png");
+}
+
+var formatLatLon = data => data && data.lat + "," + data.lon
+
+CmdUtils.CreateCommand({
+  names: ["check weather", "get weather", "weather"],
+  author: {
+    name: "mitcho (Michael Yoshitaka Erlewine)",
+    email: "mitcho@mitcho.com",
+  },
+  contributor: "satyr",
+  arguments: {
+    object: noun_arb_text,
+    format: noun_type_temperature_unit,
+  },
+  icon: "chrome://ubiquity/skin/icons/wunderground.ico",
+  description: ("Checks the weather for a given location. It detects your " +
+                "current location as a default."),
+  help: ("Try issuing &quot;weather near chicago&quot;.  It works with " +
+         "zip-codes, too.  You can add 'in celsius' or 'in farenheit' to " +
+         "specify the temperature scale."),
+  execute: function weather_execute({object: {text, data}}) {
+    Utils.openUrlInBrowser(
+      "http://www.wunderground.com/cgi-bin/findweather/getForecast?query=" +
+      encodeURIComponent(formatLatLon(data) || text));
+  },
+  preview: function weather_preview(pblock, {
+    object: {text, data}, format: {text: tempUnit}}) {
+    if (!text) {
+      pblock.innerHTML = _("Gets the weather for a zip code/city.");
+      return;
+    }
+
+    const W4L = _("Weather for ${location}");
+    pblock.innerHTML = (CmdUtils.renderTemplate(W4L, {location: text}) +
+                        " " + Utils.prefs.get("intl.ellipsis", "..."));
+
+    var userLocation = CmdUtils.getGeoLocation();
+    //use either the specified "in" unit or get from geolocation
+    tempUnit = tempUnit || TEMPERATURE_UNITS[
+      +!(userLocation && /^(?:U[SM]|BZ)$/.test(userLocation.country_code))];
+    var xmls = {}, param = {query: formatLatLon(data) || text};
+    ["WXCurrentObXML", "ForecastXML"].forEach(function (api) {
+      CmdUtils.previewGet(
+        pblock,
+        "http://api.wunderground.com/auto/wui/geo/" + api + "/index.xml",
+        param,
+        function (x) { xmls[api] = x; weather_tryToPreview(); },
+        "xml");
+    });
+    function weather_tryToPreview() {
+      var {WXCurrentObXML: weatherXml, ForecastXML: forecastXml} = xmls;
+      if (!weatherXml || !forecastXml) return;
+
+      function qstc(xml, selector) {
+        try{
+        return xml.querySelector(selector).textContent;
+        } catch(e) { Utils.reportInfo(e.stack) }
+      }
+
+      //change wind speed to kmh based on geolocation
+      var windText = qstc(weatherXml, "wind_string");
+      var windSpeed = parseFloat(qstc(weatherXml, "wind_mph"));
+      var windUnit = "mph";
+      //http://en.wikipedia.org/wiki/Si_units
+      if (userLocation) switch (userLocation.country_code) {
+        case "US": case "UM": case "LR": case "MM": case "GB":
+        break;
+        case "JP":
+        windUnit = "m/s";
+        windSpeed *= .45;
+        break;
+        default:
+        windUnit = "km/h";
+        windSpeed *= 1.6;
+      }
+      var [tempChar] = tempUnit, condition = qstc(weatherXml, "weather");
+      var weather = {
+        condition: condition,
+        temp: (qstc(weatherXml, "temp_" + tempChar) +
+               "&#xB0;" + tempChar.toUpperCase()),
+        humidity: qstc(weatherXml, "relative_humidity"),
+        wind: /^\D+/.exec(windText) + windSpeed.toFixed(1) + windUnit,
+        img: yahooWeatherImage(condition),
+        forecast: []
+      };
+
+      $("simpleforecast > forecastday", forecastXml).each(function (i) {
+        var condition = qstc(this, "conditions");
+        weather.forecast.push({
+          label: i ? _("${month}/${day}", {
+            month: qstc(this, "month"),
+            day: qstc(this, "day"),
+          }) : _("today"),
+          condition: condition,
+          img: yahooWeatherImage(condition),
+          high: qstc(this, "high > " + tempUnit),
+          low: qstc(this, "low > " + tempUnit),
+        });
+      });
+
+      var loc = qstc(weatherXml, "display_location > full");
+      pblock.innerHTML = CmdUtils.renderTemplate(
+        feed.dom.getElementById("weather-search").innerHTML, {
+          w: weather, location: loc,
+          weatherMessage: _(W4L, {location: loc}),
+        });
+    }
+  }
+});
+
+CmdUtils.CreateCommand({
+  names: ["define", "get definition"],
+  description: "Gives the meaning of a word, using answers.com.",
+  help: "Try issuing &quot;define aglet&quot;",
+  icon: "chrome://ubiquity/skin/icons/answers.ico",
+  arguments: [{role: "object", nountype: noun_arb_text, label: "word"}],
+  execute: function define_execute({object}) {
+    Utils.openUrlInBrowser("http://www.answers.com/" + encodeURI(object.text));
+  },
+  preview: function define_preview(pblock, {object: {text: word, html}}) {
+    if (!word) return void this.previewDefault(pblock);
+
+    pblock.innerHTML = _("Gives the definition of the word ${word}.",
+                         {word: html});
+    CmdUtils.previewAjax(pblock, {
+      url: ("http://services.aonaware.com/" +
+            "DictService/DictService.asmx/DefineInDict"),
+      data: {
+        word: word,
+        dictId: "wn", // wn: WordNet, gcide: Collaborative Dictionary
+      },
+      success: function define_success(xml) {
+        pblock.innerHTML = (
+          jQuery(xml)
+          .find("WordDefinition > Definitions > Definition:first-child" +
+                " > WordDefinition")
+          .text()
+          .replace(/^\s*.+/, "<h2>$&</h2>")
+          .replace(/\[[^\]]*\]/g, "")
+          .replace(/\d+:/g, "<br/><strong>$&</strong>")
+          .replace(/1:/g, "<br/>$&"));
+      },
+    });
+  }
+});
+
+CmdUtils.makeSearchCommand({
+  name: "Google Images",
+  arguments: [{role: "object", nountype: noun_arb_text, label: "query"}],
+  author: {name: "Federico Parodi", email: "getimages@jimmy2k.it"},
+  contributor: "satyr",
+  homepage: "http://www.jimmy2k.it/getimagescommand",
+  license: "MPL",
+  icon: "chrome://ubiquity/skin/icons/google.ico",
+  description: "Browse pictures from Google Images.",
+  url: "https://www.google.com/search?tbm=isch&q={QUERY}",
+  preview: function gi_preview(pblock, {object: {text: q}}) {
+    if (!q) return void this.previewDefault(pblock)
+
+    pblock.innerHTML = "..."
+     var data    = {q, start: 0, tbm: "isch"}
+       , starts  = []
+       , options = {
+      data,
+      url: "https://www.google.com/search",
+      headers: {"User-Agent": "DoCoMo/2.0"},
+      error: xhr => {
+        pblock.innerHTML =
+          `<em class=error>${xhr.status} ${xhr.statusText}</em>`
+      },
+      success: (html, status, xhr) => {
+        var doc = xhr.responseXML
+        // <a><img>
+        var images = doc.querySelectorAll(".image")
+          , info   = doc.querySelector("#topbar + div:not([id])")
+
+        var i = 0
+        for (let a of images) {
+          a.id        = i
+          a.href      = Utils.urlToParams(a.href).imgurl
+          a.accessKey = String.fromCharCode("A".charCodeAt() + i)
+          let img = a.children[0]
+          img.removeAttribute("height")
+          img.removeAttribute("style")
+          ++i
+        }
+        pblock.innerHTML = CmdUtils.renderTemplate(
+          feed.dom.getElementById("google-images").innerHTML, {
+          images,
+          info: info ? info.outerHTML : '',
+          range: images.length
+                 ? `${data.start + 1} ~ ${data.start + images.length}`
+                 : 'x',
+        })
+
+        if (!data.start)
+          pblock.querySelector(".prev").disabled = true
+        if (!doc.querySelector("#navbar > b"))
+          pblock.querySelector(".next").disabled = true
+        pblock.querySelector(".navi").addEventListener("click", e => {
+          var b = e.target
+          if (b.type !== "button") return
+          e.preventDefault()
+          b.disabled = true
+          if (b.value === "<")
+            data.start = starts.pop() || 0
+          else {
+            starts.push(data.start)
+            data.start += images.length
+          }
+          CmdUtils.previewAjax(pblock, options)
+        })
+      },
+    }
+    CmdUtils.previewAjax(pblock, options)
+  }
+})
+
+const
+MAPS = 'http://maps.google.com/',
+MAP_INIT = '!'+ function init([lat, lng, type, zoom]){
+  self.maps = google.maps
+  self.M = new maps.Map(document.getElementById('map'), {
+    center: new maps.LatLng(lat, lng),
+    mapTypeId: type || maps.MapTypeId.ROADMAP,
+    zoom: zoom || 12,
+    scaleControl: true,
+    mapTypeControl: true,
+    mapTypeControlOptions: {
+      style: maps.MapTypeControlStyle.DROPDOWN_MENU,
+    },
+  })
+  self.onbeforeunload = mapact
+  addEventListener('go', function mapdo(e){
+    var data = JSON.parse(e.data)
+    maptie(document.getElementById('buttons'), mapkey)
+    data.q || (data.q = data.dest, data.dest = '')
+    if(data.zoom) M.setZoom(data.zoom)
+    if(data.type) M.setMapTypeId(data.type)
+    if(!data.q){
+      M.panTo(new maps.LatLng(data.lat, data.lon))
+      return
+    }
+    var addrs = document.getElementById('addrs')
+      , trips = document.getElementById('trips')
+    addrs.innerHTML = 'Searching <b></b> ...'
+    trips.innerHTML = ''
+    addrs.firstElementChild.textContent = data.q
+    var req = {}
+    if(data.dest){
+      let dr = new maps.DirectionsRenderer()
+      dr.setMap(M)
+      dr.setPanel(trips)
+      ;({q: req.origin, dest: req.destination} = data)
+      req.travelMode = maps.DirectionsTravelMode.DRIVING
+      req.provideRouteAlternatives = true
+      new maps.DirectionsService().route(req, function maproute(res, stat){
+        if(stat !== maps.DirectionsStatus.OK){
+          addrs.innerHTML = '<em>'+ stat +'</em>'
+          return
+        }
+        data.steps = res.routes[0].legs[0].steps
+        dr.setDirections(res)
+      })
+      return
+    }
+    req.address = data.q
+    new maps.Geocoder().geocode(req, function mapgeo(rs){
+      if(!rs || !rs.length){
+        addrs.innerHTML = 'No results for <b></b>'
+        addrs.firstElementChild.textContent = data.q
+        return
+      }
+      addrs.innerHTML = ''
+      rs.slice(0, 10).forEach(function(r, i){
+        let a = document.createElement('a')
+        a.href = 'javascript:'
+        a.value = i
+        a.accessKey = -~i % 10
+        a.textContent = r.formatted_address
+        a.onclick = mapgo
+        addrs.appendChild(a)
+      })
+      addrs.children[0].onclick()
+      function mapgo(e){
+        if(e) e.stopPropagation(), this.blur()
+        M.panTo(rs[this.value].geometry.location)
+        ;(this.parentNode.querySelector('.active') || 0).className = ''
+        this.className = 'active'
+      }
+    })
+    function mapkey(e){
+      var {body} = document
+        , b = e.target
+        , k = b.accessKey.toLowerCase()
+      e.preventDefault()
+      b.blur()
+      if(~'hjkl'.indexOf(k)){
+        let [x, y] = b.value.split(',')
+        M.panBy(.9 * x * body.clientWidth,
+                .9 * y * body.clientHeight)
+        return
+      }
+      if(~'pm'.indexOf(k))
+        M.setZoom(M.getZoom() + +(b.value + 1))
+      else if(~'rs'.indexOf(k))
+        M.setMapTypeId(maps.MapTypeId[b.value])
+      else var u =
+        'https://maps.googleapis.com/maps/api/staticmap'+
+        '?key=AIzaSyD0NFadBBZ8qJmWMmNknyxeI0EmIalWVeI&sensor=false'+
+        '&maptype='+ M.getMapTypeId() +
+        '&center='+ M.getCenter().toUrlValue() +
+        '&zoom='+ M.getZoom() +
+        '&size='+ body.clientWidth +'x'+ body.clientHeight +
+        (!('steps' in data) ? '' : [
+           for (s of data.steps)
+           '&path='+ s.start_point.toUrlValue() +'|'+ s.end_point.toUrlValue()
+         ].join('')) +
+        (data.lang && '&language='+ data.lang)
+      mapact(k, u)
+    }
+  }, false)
+  function maptie(it, fn){
+    'tied' in it || it.addEventListener('click', fn, it.tied = true)
+  }
+  function mapact(key, url){
+    dispatchEvent(new MessageEvent('action', {
+      data: url || '',
+      origin: '*',
+      lastEventId: key || '',
+      source: self,
+    }))
+  }
+}
+{ let loc = CmdUtils.geoLocation
+  var gCoords = {
+    lat: loc ? loc.lat : 180 * Math.random() -  90,
+    lon: loc ? loc.lon : 360 * Math.random() - 180,
+  }
+}
+CmdUtils.CreateCommand({
+  names: ['map', 'Google Maps'],
+  description: 'Explores '+ 'Google Maps'.link(MAPS) +'.',
+  help: (
+    '<b>[ accesskeys ]</b><pre style="line-height:1.5">'+
+    ['R/S     : Roadmap / Satellite',
+     'H/J/K/L : \u2190 / \u2193 / \u2191 / \u2192',
+     'P/M     : + / -',
+     'C/V     : Copy / Insert'].join('\n') +
+    '</pre>').replace(/\b[A-Z]\b/g, '$&'.bold()),
+  icon: 'chrome://ubiquity/skin/icons/google.ico',
+  arguments: {
+    object: {
+      name: 'map-suggest', rankLast: true,
+      suggest: function map_suggest(txt, htm, cb, sx){
+        if(!txt) return
+        var ss = [CmdUtils.makeSugg(txt, htm, 0, .4)]
+        if(!sx || sx[1]) ss.push($.ajax({
+          url: 'https://maps-api-ssl.google.com/maps/suggest',
+          data: {q: txt}, dataType: 'text',
+          success: function map_success(js0n){
+            var s = new Function('return'+ js0n)().suggestion
+            s && cb([for (x of s) {text: x.query, summary: x.query, score: .3}])
+          },
+        }))
+        return ss
+      },
+    },
+    goal   : noun_arb_text,
+    format : noun_type_lang_google
+  },
+  execute: function map_execute({
+    object: {text: q}, goal: {text: dest}, format: {data: lang}
+  }){
+    var p = {}
+    if(dest){
+      p.saddr = q
+      p.daddr = dest
+    } else p.q = q
+    if(lang) p.hl = lang
+    Utils.openUrlInBrowser(MAPS + Utils.paramsToString(p))
+  },
+  preview: function map_preview(pb, {
+    object: {text: q}, goal: {text: dest}, format: {data: lang}
+  }){
+    var doc = pb.ownerDocument, dat = Bin.mapData() || {}
+    if(!doc.getElementById('init')){
+      let div = doc.createElement('div'), script = doc.createElement('script')
+      div.innerHTML =
+        '<style id="init">'+ feed.dom.getElementById("map-css").textContent +
+        '</style><div id="buttons">'+
+        [...new Iterator({
+          h: '-1,', j: ',1', k: ',-1', l: '1,', p: '+', m: '-',
+          r: 'ROADMAP', s: 'SATELLITE',
+          c: '(C)opy', v: 'Insert (V)',
+        })].map(([k, v]) =>
+          '<input type="button" accesskey="'+ k +'" value="'+ v +'">'
+        ).join('') + '</div>'
+      pb.appendChild(div)
+      script.type = 'application/javascript;version=1.8'
+      script.innerHTML = MAP_INIT +
+        '('+ uneval([gCoords.lat, gCoords.lon, dat.type, dat.zoom]) +')'
+      pb.appendChild(script)
+    }
+    var win = doc.defaultView
+    win.dispatchEvent(new win.MessageEvent('go', {
+      data: JSON.stringify({
+        q: q, dest: dest,
+        lat: gCoords.lat,
+        lon: gCoords.lon,
+        lang: lang || 'en',
+        type: dat.type,
+        zoom: dat.zoom,
+      }),
+      origin: '*',
+      source: win,
+    }))
+    win.addEventListener('action', this._act, false)
+    this._act.me = this
+  },
+  previewUrl:
+    'data:text/html,<head><meta charset=UTF-8>'+
+    '<script src='+ MAPS + 'maps/api/js?sensor=false></script></head>'+
+    '<div id=map style="width:100%;height:100%"></div>'+
+    '<div id=addrs></div><div id=trips></div>',
+  _act: function map_act(e){
+    var url = e.data
+    if(url){
+      if(e.lastEventId === 'log') return Utils.reportInfo(url)
+      let img = '<img src="'+ Utils.escapeHtml(url) +'"/>'
+      e.lastEventId === 'c'
+      ? (Utils.clipboard.set({text: url, html: img}),
+         displayMessage(url, map_act.me))
+      : CmdUtils.setSelection(img, {text: url})
+      return
+    }
+    let {M} = XPCNativeWrapper.unwrap(this)
+    Bin.mapData({type: M.getMapTypeId(), zoom: M.getZoom()})
+  },
+})
+
+]]></script>
+</body>
+</html>
