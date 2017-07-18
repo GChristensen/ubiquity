@@ -11,7 +11,7 @@ This is a patched clone of the original repository by [satyr](http://profile.hat
 Enhancements in this patched version: 
 
 * [subscribe locally](http://d.hatena.ne.jp/murky-satyr/20090308/subscribe_locally) command added as a builtin one
-* commands at the suggestion list are dedashed
+* commands at the suggestion list are dedashed (but you don't need to type the dash in the input prompt even in the original version)
 
 ![](dedashed.png?raw=true)
 
