@@ -1,4 +1,4 @@
-diff -bur satyr-ubiquity-f50c546669f3/manage.py satyr-ubiquity-patched/manage.py
+diff -bur --new-file satyr-ubiquity-f50c546669f3/manage.py satyr-ubiquity-patched/manage.py
 --- satyr-ubiquity-f50c546669f3/manage.py	2016-09-10 06:28:21 +0400
 +++ satyr-ubiquity-patched/manage.py	2017-07-18 06:42:17 +0400
 @@ -98,13 +98,13 @@
@@ -18,7 +18,7 @@ diff -bur satyr-ubiquity-f50c546669f3/manage.py satyr-ubiquity-patched/manage.py
  
      if options.profile_dir:
          options.extension_file = os.path.join(options.profile_dir,
-diff -bur satyr-ubiquity-f50c546669f3/ubiquity/install.rdf satyr-ubiquity-patched/ubiquity/install.rdf
+diff -bur --new-file satyr-ubiquity-f50c546669f3/ubiquity/install.rdf satyr-ubiquity-patched/ubiquity/install.rdf
 --- satyr-ubiquity-f50c546669f3/ubiquity/install.rdf	2016-09-10 06:28:21 +0400
 +++ satyr-ubiquity-patched/ubiquity/install.rdf	2017-07-18 06:52:46 +0400
 @@ -1,46 +1,46 @@
@@ -107,7 +107,7 @@ diff -bur satyr-ubiquity-f50c546669f3/ubiquity/install.rdf satyr-ubiquity-patche
 +    <em:translator>kourge (zh-TW)</em:translator>
 +  </Description>
 +</RDF>
-diff -bur satyr-ubiquity-f50c546669f3/ubiquity/modules/parser.js satyr-ubiquity-patched/ubiquity/modules/parser.js
+diff -bur --new-file satyr-ubiquity-f50c546669f3/ubiquity/modules/parser.js satyr-ubiquity-patched/ubiquity/modules/parser.js
 --- satyr-ubiquity-f50c546669f3/ubiquity/modules/parser.js	2016-09-10 06:28:21 +0400
 +++ satyr-ubiquity-patched/ubiquity/modules/parser.js	2017-07-18 00:37:47 +0400
 @@ -316,7 +316,7 @@
@@ -119,7 +119,7 @@ diff -bur satyr-ubiquity-f50c546669f3/ubiquity/modules/parser.js satyr-ubiquity-
      for (let x in (this.fromNounFirstSuggestion
                     ? this._argSuggs
                     : this._argStrings)) {
-diff -bur satyr-ubiquity-f50c546669f3/ubiquity/modules/setup.js satyr-ubiquity-patched/ubiquity/modules/setup.js
+diff -bur --new-file satyr-ubiquity-f50c546669f3/ubiquity/modules/setup.js satyr-ubiquity-patched/ubiquity/modules/setup.js
 --- satyr-ubiquity-f50c546669f3/ubiquity/modules/setup.js	2016-09-10 06:28:21 +0400
 +++ satyr-ubiquity-patched/ubiquity/modules/setup.js	2017-07-18 00:35:56 +0400
 @@ -85,6 +85,9 @@
@@ -132,5 +132,47 @@ diff -bur satyr-ubiquity-f50c546669f3/ubiquity/modules/setup.js satyr-ubiquity-p
    }],
  
    __maybeReset: function __maybeReset() {
-Only in satyr-ubiquity-patched/ubiquity/standard-feeds: local.js
-Only in satyr-ubiquity-patched: ubiquity-0.6.5g.xpi
+diff -bur --new-file satyr-ubiquity-f50c546669f3/ubiquity/standard-feeds/local.js satyr-ubiquity-patched/ubiquity/standard-feeds/local.js
+--- satyr-ubiquity-f50c546669f3/ubiquity/standard-feeds/local.js	1970-01-01 04:00:00 +0400
++++ satyr-ubiquity-patched/ubiquity/standard-feeds/local.js	2017-07-17 22:04:58 +0400
+@@ -0,0 +1,38 @@
++CmdUtils.CreateCommand({
++  name: 'subscribe locally',
++  icon: 'chrome://ubiquity/skin/icons/favicon.ico',
++  description: 'Directly subscribes to local command/skin feeds.',
++  help: ('Execute to open the file picker. '+
++         'You can select multiple files with it.'),
++  homepage: 'http://d.hatena.ne.jp/murky-satyr/20090308/subscribe_locally',
++  author: 'satyr', license: 'MIT',
++  execute: function sl_execute(){
++    const {nsIFilePicker, nsIFile} = Ci;
++    var fp = Cc['@mozilla.org/filepicker;1'].createInstance(nsIFilePicker);
++    fp.init(context.chromeWindow, this.name, nsIFilePicker.modeOpenMultiple);
++    fp.appendFilter('JS/XHTML/CSS', '*.js;*.xhtml;*.css');
++    fp.appendFilter('*', '*');
++    if(fp.show() !== nsIFilePicker.returnOK) return;
++    var {files} = fp;
++    var {feedManager} = (
++      Cu.import('resource://ubiquity/modules/setup.js', null)
++      .UbiquitySetup.createServices());
++    var {getURLSpecFromFile} = (
++      Utils.IOService.getProtocolHandler('file')
++      .QueryInterface(Ci.nsIFileProtocolHandler));
++    var paths = [], css = /\.css$/i;
++    while(files.hasMoreElements()){
++      let file = files.getNext().QueryInterface(nsIFile);
++      let url = getURLSpecFromFile(file);
++      feedManager.addSubscribedFeed({
++        type: css.test(file.leafName) ? 'ubiquity-skin' : 'commands',
++        url: url, sourceUrl: url,
++        canAutoUpdate: true,
++        title: file.leafName,
++      });
++      paths.push(file.path);
++    }
++    displayMessage('Subscribed to: '+ paths.join(', '), this);
++    Utils.tabs.reload(/^about:ubiquity\?(?:cmdlist|settings)\b/);
++  },
++});
+\ No newline at end of file
+Files satyr-ubiquity-f50c546669f3/ubiquity-0.6.5g.xpi and satyr-ubiquity-patched/ubiquity-0.6.5g.xpi differ
