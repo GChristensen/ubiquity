@@ -1,0 +1,2 @@
+# ubiquity
+Firefox Ubiquity Addon
