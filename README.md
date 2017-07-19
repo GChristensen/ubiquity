@@ -11,8 +11,9 @@ This is a patched clone of the original repository by [satyr](http://profile.hat
 
 Enhancements in this patched version: 
 
-* [subscribe locally](http://d.hatena.ne.jp/murky-satyr/20090308/subscribe_locally) command added as a builtin one
-* commands at the suggestion list are dedashed (but it seems that it's still necessary to type tje dash at the command prompt)
+* [subscribe locally](http://d.hatena.ne.jp/murky-satyr/20090308/subscribe_locally) command is added as a builtin one
+* commands at the suggestion list are dedashed (but it seems that it's still necessary to type the dash at the command prompt since Ubiquity's 
+current parser can't detect command names with spaces)
 
 ![](dedashed.png?raw=true)
 
