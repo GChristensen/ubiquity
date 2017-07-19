@@ -7,7 +7,7 @@ See more at: https://wiki.mozilla.org/Labs/Ubiquity
 [DOWNLOAD](ubiquity-0.6.5g.xpi?raw=true) :: [VIDEO MANUAL](https://youtu.be/9hXU1GAm_Qg)
 
 This is a patched clone of the original repository by [satyr](http://profile.hatena.ne.jp/murky-satyr/) at: https://bitbucket.org/satyr/ubiquity 
-(also available at [AMO](https://addons.mozilla.org/en-US/firefox/addon/mozilla-labs-ubiquity/))
+(also available at [AMO](https://addons.mozilla.org/en-US/firefox/addon/mozilla-labs-ubiquity/)) primarily intended for author's personal needs.
 
 Enhancements in this patched version: 
 
