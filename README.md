@@ -1,7 +1,5 @@
 # Ubiquity
 
-Ubiquity "legacy" Firefox Addon (does not work in firefox 57+).
+The clone repository of satyr's Ubiquity for legacy Firefox (does not work in firefox 57+).
 
-# [DEPRECATED]
-
-See: [UbiquityWE](https://github.com/GChristensen/ubichr)
+Please see [iShell](https://github.com/GChristensen/ishell) if you need Ubuquity on Firefox Quantum.
